@@ -18,11 +18,15 @@ namespace WebShop.Controllers
             _logger = logger;
         }
 
+   
         public IActionResult Index()
         {
-            return View();
+            return View("register");
         }
-
+        public string Display()
+        {
+            return "Hello World";
+        }
         public IActionResult Privacy()
         {
             return View();
