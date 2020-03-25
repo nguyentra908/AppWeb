@@ -1,0 +1,182 @@
+﻿
+@{
+    ViewData["Title"] = "master";
+
+}
+
+
+<!doctype html>
+<html >
+<head>
+    <meta charset="utf-8">
+
+    <title>Final Project - Laptop Store Website - N4QPT</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="">
+    <link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/themes/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="themes/css/font-awesome.min2.css"> -->
+    <link rel="stylesheet" type="text/css" href="~/themes/css/font-awesome.min3.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link href="~/themes/css/bootstrappage.css" rel="stylesheet" />
+
+    <!-- global styles -->
+    <link href="~/themes/css/flexslider.css" rel="stylesheet" />
+    <link href="~/themes/css/main.css" rel="stylesheet" />
+    <link href='//fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+   
+
+    <!-- scripts -->
+    <script src="~/themes/js/jquery-1.7.2.min.js"></script>
+    <script src="~/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/themes/js/superfish.js"></script>
+    <script src="~/themes/js/jquery.scrolltotop.js"></script>
+
+</head>
+<body>
+    <div id="top-bar" class="container">
+        <div class="row">
+            <div class="span4">
+                <form method="POST" class="search_form">
+                    <div class="input-group">
+                        <input type="text" class="search-query form-control input-group" placeholder="Tên máy, model,...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary rounded-circle btnpro" type="button" id="btn-search">
+                                <span class="fa fa-search"></span>
+                            </button>
+                        </span>
+
+                    </div>
+                </form>
+            </div>
+            <div class="span8">
+                <div class="account pull-right">
+                    <ul class="user-menu">
+                        <li><a href="https://localhost:44357/KHACHHANG/TaiKhoan">Tài khoản</a></li>
+                        <li><a href="https://localhost:44357/KHACHHANG/GioHang">Giỏ hàng</a></li>              
+                        <li><a href="https://localhost:44357/KHACHHANG/DangNhap">Đăng nhập</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="wrapper" class="container">
+        <section class="navbar main-menu">
+            <div class="navbar-inner main-menu">
+                <a href="https://localhost:44357" class="logo pull-left"><h4 class="title">DI ĐỘNG THÔNG MINH </h4></a>
+                <nav id="menu" class="pull-right">
+                    <ul>
+                        <li>
+                            <a href="./products.html">Hãng sản xuất</a>
+                            <div class="menu2">
+                            <ul>
+                                <li><a href="./products.html">Apple</a></li>
+                                <li><a href="./products.html">Dell</a></li>
+                                <li><a href="./products.html">Asus</a></li>
+                                <li><a href="./products.html">HP</a></li>
+                                <li><a href="./products.html">Acer</a></li>
+                                <li><a href="./products.html">Lenovo</a></li>
+                            </ul>
+                            </div>
+                            
+                        </li>
+                        <li><a href="https://localhost:44357/KHACHHANG/SanPhamMoi">Bán chạy nhất</a></li>
+                        <li><a href="https://localhost:44357/KHACHHANG/SanPhamMoi1">Sản phẩm mới</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <section class="homepage-slider" id="home-slider">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li style="width: 100%; float: left; margin-right: -100%; position: relative; display: none;" class="">
+                        <img src="~/img/banner0.gif" alt="anh bia 1">
+                        <div class="intro">
+
+                        </div>
+                    </li>
+                    <li style="width: 100%; float: left; margin-right: -100%; position: relative; display: none;" class="">
+                        <img src="~/img/banner1.png" alt="anh bia 2">
+
+                    </li>
+                    <li style="width: 100%; float: left; margin-right: -100%; position: relative; display: none;" class="">
+                        <img src="~/img/banner2.png" alt="anh bia 3">
+
+                    </li>
+                    <li style="width: 100%; float: left; margin-right: -100%; position: relative; display: list-item;" class="flex-active-slide">
+                        <img src="~/img/banner3.png" alt="anh bia 4">
+
+                    </li>
+                    <li style="width: 100%; float: left; margin-right: -100%; position: relative; display: none;" class="">
+                        <img src="~/img/banner4.png" alt="anh bia 5">
+
+                    </li>
+                </ul>
+                <ul class="flex-direction-nav"><li><a class="flex-prev" href="http://localhost/lar-53/public/index#">Previous</a></li><li><a class="flex-next" href="http://localhost/lar-53/public/index#">Next</a></li></ul>
+            </div>
+        </section>
+        <section class="header_text">
+            Website chúng tôi chuyên cung cấp các sản phẩm chất lượng có uy tín và mới nhất trên thị trường hiện nay
+            <br>Hãy ghé thăm trang web của chúng tôi và đừng bỏ lỡ các sản phẩm mới nhé!
+        </section>
+
+        <section class="main-content">
+            @RenderBody()
+        </section>
+
+
+
+        <section style="background-color: #857474;" id="footer-bar">
+            <div class="row">
+                <div class="span3">
+                    <h4>Điều Hướng</h4>
+                    <ul class="nav">
+                        <li><a href="">Trang chủ</a></li>
+                        <li><a href="">Thông tin</a></li>
+                        <li><a href="">Liên hệ</a></li>
+                        <li><a href="">Giỏ hàng</a></li>
+                        <li><a href="">Đăng nhập</a></li>
+                    </ul>
+                </div>
+                <div class="span4">
+                    <h4>My Account</h4>
+                    <ul class="nav">
+                        <li><a href="#">Tài khoản của tôi</a></li>
+                        <li><a href="#">Lịch sử đặt hàng</a></li>
+                        <li><a href="#">Danh sách yêu thích</a></li>
+                        <!-- <li><a href="#">Làm mới</a></li> -->
+                    </ul>
+                </div>
+                <div class="span5">
+                    <p class="logo"><!-- <img src="themes/images/logo.png" class="site_logo" alt=""> --><h4>ĐIỆN THOẠI</h4></p>
+                    <p style="color: white;">
+                        Website chúng tôi chuyên cung cấp các sản phẩm chất lượng có uy tín và mới nhất trên thị trường hiện nay
+                        <br />Hãy ghé thăm trang web của chúng tôi và đừng bỏ lỡ các sản phẩm mới nhé!
+                    </p>
+                    <div style="margin-left: 60px;">
+                        <a href="#" class="button">
+                            <i class="fab fa-facebook-f fa-lg"></i>
+                        </a>
+                        <a href="#" class="button">
+                            <i class="fab fa-twitter fa-lg"></i>
+                        </a>
+                        <a href="#" class="button">
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="copyright">
+            <span>Copyright 2013 bootstrappage template  All right reserved.</span>
+        </section>
+
+    </div>
+</body>
+</html>
+
+

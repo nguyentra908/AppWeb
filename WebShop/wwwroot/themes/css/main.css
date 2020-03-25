@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:regular,italic,bold");
 
 /* common
@@ -11,15 +11,6 @@ body{
 label, input, button, select, textarea{
 	font-size: 12px;
 }
-img.pageBanner {
-	height: 400px;
-}
-.span5 {
-    width: 470px;
-    font-size: 15px;
-    font-family: segoe ui;
-    margin-top: 30px;
-}
 ul li a,a{
 	color:#333;
 	outline:0; 
@@ -29,7 +20,6 @@ ul li a,a{
 	-ms-transition: all 0.2s linear;
 	transition: all 0.2s linear;
 }
-
 a{
 	color:#0078D7;
 }
@@ -455,7 +445,6 @@ section.navbar{
 }
 .product-box img{
 	overflow:hidden;
-	width: 200px;
 }
 .product-box a.title{
 	text-transform:uppercase;
@@ -917,7 +906,4 @@ i.fab{
 }
 .checkbox.checkbox-inline {
 	margin-top: 0;
-}
-.table-striped img{
-	width: 200px;
 }

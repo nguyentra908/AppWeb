@@ -1,171 +1,13 @@
 ﻿
 @{
-    Layout = null;
+    ViewData["Title"] = "TrangChu";
+    Layout = "~/Views/KHACHHANG/master.cshtml";
 }
 
-<!DOCTYPE html>
-<!-- saved from url=(0036)http://localhost/lar-53/public/index -->
-<html lang="vi">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-
-    <title>Final Project Cellphone Store</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <!-- <base href="http://localhost/lar-53/public/bootstrap"> -->
-
-
-    <link href="~/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="~/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="themes/css/font-awesome.min2.css"> -->
-    <link rel="stylesheet" type="text/css" href="~/css/font-awesome.min3.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-    <link href="~/css/bootstrappage.css" rel="stylesheet">
-
-    <!-- global styles -->
-    <link href="~/css/flexslider.css" rel="stylesheet">
-    <link href="~/css/main.css" rel="stylesheet">
-
-    <!-- scripts -->
-    <script src="~/js/jquery-1.7.2.min.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
-    <script src="~/js/superfish.js"></script>
-    <script src="~/js/jquery.scrolltotop.js"></script>
-
-</head>
-
 <body>
-    <div id="top-bar" class="container">
-        <div class="row">
-            <div class="span4">
-                <form method="POST" class="search_form">
-                    <div class="input-group">
-                        <input type="text" class="search-query form-control input-group" placeholder="Tên máy, model,...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary rounded-circle btnpro" type="button" id="btn-search">
-                                <span class="fa fa-search"></span>
-                            </button>
-                        </span>
 
-                    </div>
-                </form>
-            </div>
-            <div class="span8">
-                <div class="account pull-right">
-                    <ul class="user-menu">
-                        <li><a href="http://localhost/lar-53/public/source/customer.html">Tài khoản</a></li>
-                        <li><a href="http://localhost/lar-53/public/source/cart.html">Giỏ hàng</a></li>
-                        <li><a href="http://localhost/lar-53/public/source/checkout.html">Thanh toán</a></li>
-                        <li><a href="http://localhost/lar-53/public/source/register.html">Đăng nhập</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
     <div id="wrapper" class="container">
-        <section class="navbar main-menu">
-            <div class="navbar-inner main-menu">
-                <a href="http://localhost/lar-53/public/source/index.html" class="logo pull-left">
-                    <h4 class="title">Di động thông minh </h4>
-                </a>
-                <nav id="menu" class="pull-right">
-                    <ul class="sf-js-enabled sf-shadow">
-                        <li>
-                            <a href="http://localhost/lar-53/public/products.html" class="sf-with-ul">Hãng sản xuất<span class="sf-sub-indicator"> »</span></a>
-                            <ul style="display: none; visibility: hidden;">
-                                <li><a href="http://localhost/lar-53/public/products.html">Apple</a></li>
-                                <li><a href="http://localhost/lar-53/public/products.html">Samsung</a></li>
-                                <li><a href="http://localhost/lar-53/public/products.html">Oppo</a></li>
-                                <li><a href="http://localhost/lar-53/public/products.html">Readmi</a></li>
-                                <li><a href="http://localhost/lar-53/public/products.html">Xiaomi</a></li>
-                                <li><a href="http://localhost/lar-53/public/products.html">Lenovo</a></li>
-                                <li><a href="http://localhost/lar-53/public/products.html">Hãng khác</a></li>
-                            </ul>
-                        </li>
-                        <!--
-                            <li><a href="./products.html">Loại sản phẩm</a>
-                                <ul>
-                                    <li><a href="./products.html">Chơi game</a></li>
-                                    <li><a href="./products.html">Học tập-văn phòng</a></li>
-                                    <li><a href="./products.html">Đồ họa-kỹ thuật</a></li>
-                                    <li><a href="./products.html">Cao cấp sang trọng</a></li>
-                                </ul>
-                            </li>
-                        -->
-                        <!-- <li><a href="./products.html">Man</a></li>
-                            <li><a href="./products.html">Hangbag</a></li> -->
-                        <li><a href="http://localhost/lar-53/public/products.html">Bán chạy nhất</a></li>
-                        <li><a href="http://localhost/lar-53/public/products.html">Sản phẩm mới</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </section><div class="_toggleMenu" style="display: none;">
-            <a class="toggleMenu" href="http://localhost/lar-53/public/index#">- MENU -</a><ul class="nav">
-                <li>
-                    <a href="http://localhost/lar-53/public/products.html" class="parent">Hãng sản xuất</a>
-                    <ul>
-                        <li><a href="http://localhost/lar-53/public/products.html">Apple</a></li>
-                        <li><a href="http://localhost/lar-53/public/products.html">Samsung</a></li>
-                        <li><a href="http://localhost/lar-53/public/products.html">Oppo</a></li>
-                        <li><a href="http://localhost/lar-53/public/products.html">Readmi</a></li>
-                        <li><a href="http://localhost/lar-53/public/products.html">Xiaomi</a></li>
-                        <li><a href="http://localhost/lar-53/public/products.html">Lenovo</a></li>
-                        <li><a href="http://localhost/lar-53/public/products.html">Hãng khác</a></li>
-                    </ul>
-                </li>
-                <!--
-                    <li><a href="./products.html">Loại sản phẩm</a>
-                        <ul>
-                            <li><a href="./products.html">Chơi game</a></li>
-                            <li><a href="./products.html">Học tập-văn phòng</a></li>
-                            <li><a href="./products.html">Đồ họa-kỹ thuật</a></li>
-                            <li><a href="./products.html">Cao cấp sang trọng</a></li>
-                        </ul>
-                    </li>
-                -->
-                <!-- <li><a href="./products.html">Man</a></li>
-                    <li><a href="./products.html">Hangbag</a></li> -->
-                <li><a href="http://localhost/lar-53/public/products.html">Bán chạy nhất</a></li>
-                <li><a href="http://localhost/lar-53/public/products.html">Sản phẩm mới</a></li>
-            </ul>
-        </div>
-        <section class="homepage-slider" id="home-slider">
-            <div class="flexslider">
-                <ul class="slides">
-                    <li style="width: 100%; float: left; margin-right: -100%; position: relative; display: none;" class="">
-                        <img src="~/img/banner0.gif" alt="anh bia 1">
-                        <div class="intro">
-                            <!--<h1>Laptop mua online</h1>
-                            <p><span>Giảm thêm đến 1.000.000đ</span></p>
-                            <p><span>Áp dụng kèm theo khuyến mãi trả thẳng khác</span></p> -->
-                        </div>
-                    </li>
-                    <li style="width: 100%; float: left; margin-right: -100%; position: relative; display: none;" class="">
-                        <img src="~/img/banner1.png" alt="anh bia 2">
 
-                    </li>
-                    <li style="width: 100%; float: left; margin-right: -100%; position: relative; display: none;" class="">
-                        <img src="~/img/banner2.png" alt="anh bia 3">
-
-                    </li>
-                    <li style="width: 100%; float: left; margin-right: -100%; position: relative; display: list-item;" class="flex-active-slide">
-                        <img src="~/img/banner3.png" alt="anh bia 4">
-
-                    </li>
-                    <li style="width: 100%; float: left; margin-right: -100%; position: relative; display: none;" class="">
-                        <img src="~/img/banner4.png" alt="anh bia 5">
-
-                    </li>
-                </ul>
-                <ul class="flex-direction-nav"><li><a class="flex-prev" href="http://localhost/lar-53/public/index#">Previous</a></li><li><a class="flex-next" href="http://localhost/lar-53/public/index#">Next</a></li></ul>
-            </div>
-        </section>
-        <section class="header_text">
-            Website chúng tôi chuyên cung cấp các sản phẩm chất lượng có uy tín và mới nhất trên thị trường hiện nay
-            <br>Hãy ghé thăm trang web của chúng tôi và đừng bỏ lỡ các sản phẩm mới nhé!
-        </section>
         <section class="main-content">
             <div class="row">
                 <div class="span12">
@@ -175,11 +17,11 @@
                             <h4 class="title">
 
                                 <span class="pull-left">
-                                    <span class="text"><span class="line"><a href="http://localhost/lar-53/public/source/product_detail.html"><strong>Các sản phẩm gần đây nhất</strong></a></span></span>
+                                    <span class="text"><span class="line"><a href="https://localhost:44357/KHACHHANG/ChiTietSanPham"><strong>Các sản phẩm gần đây nhất</strong></a></span></span>
                                 </span>
 
                                 <span class="pull-right">
-                                    <a class="left button" href="http://localhost/lar-53/public/index#myCarousel-2" data-slide="prev"></a><a class="right button" href="http://localhost/lar-53/public/index#myCarousel-2" data-slide="next"></a>
+                                    <a class="left button" href="https://localhost:44357/KHACHHANG/ChiTietSanPham" data-slide="prev"></a><a class="right button" href="http://localhost/lar-53/public/index#myCarousel-2" data-slide="next"></a>
                                 </span>
                             </h4>
                             <div id="myCarousel-2" class="myCarousel carousel slide">
@@ -190,10 +32,10 @@
                                                 <div class="product-box">
                                                     <span class="sale_tag"></span>
                                                     <p>
-                                                        <a href="http://localhost/lar-53/public/product_detail.html"><img src="~/img/Galaxy-note-10-plus.jpg" alt=""></a>
+                                                        <a href="https://localhost:44357/KHACHHANG/ChiTietSanPham"><img src="~/img/Galaxy-note-10-plus.jpg" alt=""></a>
                                                     </p>
-                                                    <a href="http://localhost/lar-53/public/product_detail.html" class="title">Samsung Galaxy Note 10 Plus 12Gb/256Gb Chính Hãng Siêu phẩm Android 2019</a><br>
-                                                    <a href="http://localhost/lar-53/public/source/products.html" class="category">
+                                                    <a href="https://localhost:44357/DOAN/ChiTietSanPham" class="title">Samsung Galaxy Note 10 Plus 12Gb/256Gb Chính Hãng Siêu phẩm Android 2019</a><br>
+                                                    <a href="https://localhost:44357/DOAN/ChiTietSanPham" class="category">
                                                         <p class="price">21,590,000 VNĐ</p>
                                                     </a>
 
@@ -239,40 +81,40 @@
                                             <li class="span3">
                                                 <div class="product-box">
                                                     <p>
-                                                        <a href="http://localhost/lar-53/public/product_detail.html"><img src="~/img/Redmi-7a-1.png" alt=""></a>
+                                                        <a href="https://localhost:44357/DOAN/ChiTietSanPham"><img src="~/img/Redmi-7a-1.png" alt=""></a>
                                                     </p>
-                                                    <a href="http://localhost/lar-53/public/product_detail.html" class="title">Know exactly</a><br>
-                                                    <a href="http://localhost/lar-53/public/products.html" class="category">Quis nostrud</a>
+                                                    <a href="https://localhost:44357/DOAN/ChiTietSanPham" class="title">Know exactly</a><br>
+                                                    <a href="https://localhost:44357/DOAN/ChiTietSanPham" class="category">Quis nostrud</a>
                                                     <p class="price">1,890,000 VNĐ</p>
                                                 </div>
                                             </li>
                                             <li class="span3">
                                                 <div class="product-box">
                                                     <p>
-                                                        <a href="http://localhost/lar-53/public/product_detail.html"><img src="~/img/Redmi-K20-Pro-1.png" alt=""></a>
+                                                        <a href="https://localhost:44357/DOAN/ChiTietSanPham"><img src="~/img/Redmi-K20-Pro-1.png" alt=""></a>
                                                     </p>
-                                                    <a href="http://localhost/lar-53/public/product_detail.html" class="title">Ut wisi enim ad</a><br>
-                                                    <a href="http://localhost/lar-53/public/products.html" class="category">Commodo consequat</a>
+                                                    <a href="https://localhost:44357/DOAN/ChiTietSanPham" class="title">Ut wisi enim ad</a><br>
+                                                    <a href="https://localhost:44357/DOAN/ChiTietSanPham" class="category">Commodo consequat</a>
                                                     <p class="price">5,390,000 VNĐ</p>
                                                 </div>
                                             </li>
                                             <li class="span3">
                                                 <div class="product-box">
                                                     <p>
-                                                        <a href="http://localhost/lar-53/public/product_detail.html"><img src="~/img/A9-2020-2.png" alt=""></a>
+                                                        <a href="https://localhost:44357/DOAN/ChiTietSanPham"><img src="~/img/A9-2020-2.png" alt=""></a>
                                                     </p>
-                                                    <a href="http://localhost/lar-53/public/product_detail.html" class="title">You think water</a><br>
-                                                    <a href="http://localhost/lar-53/public/products.html" class="category">World once</a>
+                                                    <a href="https://localhost:44357/DOAN/ChiTietSanPham" class="title">You think water</a><br>
+                                                    <a href="https://localhost:44357/DOAN/ChiTietSanPham" class="category">World once</a>
                                                     <p class="price">6,990,000 VNĐ</p>
                                                 </div>
                                             </li>
                                             <li class="span3">
                                                 <div class="product-box">
                                                     <p>
-                                                        <a href="http://localhost/lar-53/public/product_detail.html"><img src="~/img/F11-pro-2.png" alt=""></a>
+                                                        <a href="https://localhost:44357/DOAN/ChiTietSanPham"><img src="~/img/F11-pro-2.png" alt=""></a>
                                                     </p>
-                                                    <a href="http://localhost/lar-53/public/product_detail.html" class="title">Quis nostrud exerci</a><br>
-                                                    <a href="http://localhost/lar-53/public/products.html" class="category">Quis nostrud</a>
+                                                    <a href="https://localhost:44357/DOAN/ChiTietSanPham" class="title">Quis nostrud exerci</a><br>
+                                                    <a href="https://localhost:44357/DOAN/ChiTietSanPham" class="category">Quis nostrud</a>
                                                     <p class="price">7,490,000 VNĐ</p>
                                                 </div>
                                             </li>
@@ -285,10 +127,10 @@
                                             <li class="span3">
                                                 <div class="product-box">
                                                     <p>
-                                                        <a href="http://localhost/lar-53/public/product_detail.html"><img src="~/img/bluetooth-apple-air-4.png" alt=""></a>
+                                                        <a href="https://localhost:44357/DOAN/ChiTietSanPham"><img src="~/img/bluetooth-apple-air-4.png" alt=""></a>
                                                     </p>
-                                                    <a href="http://localhost/lar-53/public/product_detail.html" class="title">Know exactly</a><br>
-                                                    <a href="http://localhost/lar-53/public/products.html" class="category">Quis nostrud</a>
+                                                    <a href="https://localhost:44357/DOAN/ChiTietSanPham" class="title">Know exactly</a><br>
+                                                    <a href="https://localhost:44357/DOAN/ChiTietSanPham" class="category">Quis nostrud</a>
                                                     <p class="price">3,690,000 VNĐ</p>
                                                 </div>
                                             </li>
@@ -635,7 +477,7 @@
 
                                                 </div>
                                             </li>
-                                            <li class="span3">
+                                            @*<li class="span3">
                                                 <div class="product-box">
                                                     <p>
                                                         <a href="http://localhost/lar-53/public/product_detail.html"><img src="~/img/3-pro-8.png" alt=""></a>
@@ -645,7 +487,7 @@
                                                         <p class="price">4,390,000 VNĐ</p>
                                                     </a>
                                                 </div>
-                                            </li>
+                                            </li>*@
                                             <li class="span3">
                                                 <div class="product-box">
                                                     <p>
@@ -718,28 +560,7 @@
                                     <!-- -->
                                     <div class="item">
                                         <ul class="thumbnails">
-                                            <!--
-                                                <li class="span3">
-                                                    <div class="product-box">
-                                                        <p>
-                                                            <a href="product_detail.html"><img src="themes/images/cloth/laptop4.png" alt="" /></a>
-                                                        </p>
-                                                        <a href="product_detail.html" class="title">Know exactly</a><br/>
-                                                        <a href="products.html" class="category">Quis nostrud</a>
-                                                        <p class="price">28.500.000đ</p>
-                                                    </div>
-                                                </li>
-                                                <li class="span3">
-                                                    <div class="product-box">
-                                                        <p>
-                                                            <a href="product_detail.html"><img src="themes/images/cloth/laptop2.jpg" alt="" /></a>
-                                                        </p>
-                                                        <a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
-                                                        <a href="products.html" class="category">Commodo consequat</a>
-                                                        <p class="price">19.500.000đ</p>
-                                                    </div>
-                                                </li>
-                                            -->
+                                          
                                             <li class="span3">
                                                 <div class="product-box">
                                                     <p>
@@ -761,57 +582,14 @@
 
             </div>
         </section>
-        <div class="row feature_box">
-            <div class="span4">
-                <div class="service">
-                    <div class="responsive">
-                        <img src="~/img/feature_img_2.png" alt="">
-                        <h4>THIẾT KẾ <strong>HIỆN ĐẠI</strong></h4>
-                        <p>Các sản phẩm được thiết kế theo mẫu mã hiện đại, thời thượng phù hợp với xu hướng người dùng hiện nay.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="span4">
-                <div class="service">
-                    <div class="customize">
-                        <img src="~/img/feature_img_1.png" alt="">
-                        <h4>GIAO HÀNG <strong>MIỄN PHÍ</strong></h4>
-                        <p>Sản phầm được giao hàng nhanh, gọn bằng nhiều hình thức nhằm đáp ứng tốt yêu cầu của khách hàng.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="span4">
-                <div class="service">
-                    <div class="support">
-                        <img src="~/img/feature_img_3.png" alt="">
-                        <h4>PHỤC VỤ <strong>24/7</strong></h4>
-                        <p>Khách hàng luôn là ưu tiên hàng đầu và được phục vụ 24/7.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
 
-    <script src="./index_files/common.js.download"></script>
-    <script src="./index_files/jquery.flexslider-min.js.download"></script>
-    <script type="text/javascript">
-    $(function() {
-        $(document).ready(function() {
-            $('.flexslider').flexslider({
-                animation: "fade",
-                slideshowSpeed: 4000,
-                animationSpeed: 600,
-                controlNav: false,
-                directionNav: true,
-                controlsContainer: ".flex-container" // the container that holds the flexslider
-            });
-        });
-    });
-    </script>
 
 
 
 
     <div id="topcontrol" title="Scroll Back to Top" style="position: fixed; bottom: 12px; right: 0px; opacity: 1; cursor: pointer;"><img src="source/themes/images/gotop.png" style="width:40px; height:40px; margin-top: 25px; margin-right: 17px;"></div>
 </body>
-</html>
+
+
