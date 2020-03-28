@@ -56,6 +56,10 @@ namespace WebShop.Controllers
         {
             return View("sanphamNew2");
         }
-     
+        public IActionResult vvv()
+        {
+            return View("vvv");
+        }
+
     }
 }
