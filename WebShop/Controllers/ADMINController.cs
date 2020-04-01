@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace WebShop.Controllers
 {
     public class ADMINController : Controller
@@ -16,6 +17,7 @@ namespace WebShop.Controllers
 
         public IActionResult DonHangAD()
         {
+            
             return View("DonHangAD");
         }
         public IActionResult SanPhamAD()

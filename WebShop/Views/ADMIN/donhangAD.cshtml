@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "donhangAD";
     Layout = "~/Views/ADMIN/masterAD.cshtml";
+    var hoadonn =(List<WebShop.Models.Hoadon>)ViewBag.HoaDon;
 }
 
 
@@ -28,32 +29,36 @@
                             <h2>Danh sách đơn hàng</h2>
                             <p>Có tổng số {{count($data)}} đơn hàng</p>
                             <table id="table">
-                                <thead>
-                                    <tr>
-                                        <th>STT</th>
-                                        <th>Mã đơn hàng</th>
-                                        <th>Tên khách hàng</th>
-                                        <th>Địa chỉ</th>
-                                        <th>Số điện thoại</th>
-                                        <th>Email</th>
-                                        <th>Ngày tạo</th>
-                                        <th>Tình trạng</th>
-                                        <th>Chi tiết đơn hàng</th>
-                                        <th>Xuất</th>
-                                        <th>Chỉnh sửa</th>
-                                    </tr>
-                                </thead>
+                              
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Mã đơn hàng</th>
+                                            <th>Tên khách hàng</th>
+                                            <th>Địa chỉ</th>
+                                            <th>Số điện thoại</th>
+                                            <th>Email</th>
+                                            <th>Ngày tạo</th>
+                                            <th>Tình trạng</th>
+                                            <th>Chi tiết đơn hàng</th>
+                                            <th>Xuất</th>
+                                            <th>Chỉnh sửa</th>
+                                        </tr>
+                                    </thead>
+                                            
                                 <tbody>
 
+
                                     <tr class="danger">
-                                        <td>{{$stt}}</td>
-                                        <td>{{$hang->MAHD}}</td>
-                                        <td>{{$hang->TEN}}</td>
-                                        <td>{{$hang->DIACHI}}</td>
-                                        <td>{{$hang->SDT}}</td>
-                                        <td>{{$hang->EMAIL}}</td>
-                                        <td>{{$hang->NGAYHD}}</td>
-                                        <td>{{$hang->TINHTRANG}}</td>
+
+                                        <td>1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                         <td>
                                             <button type="button" class="btn btn-primary"
                                                     data-mahd="{{$hang->MAHD}}"
@@ -71,7 +76,7 @@
                                         <td>
                                             <div style="text-align: right"><a href="{{ url('donhangpdf',$hang->MAHD) }}"><span> PDF</span></a></div>
                                         </td>
-                                        {{--  --}}
+
                                         <td>
                                             <button class="btn btn-info"
                                                     data-mahd="{{$hang->MAHD}}"
@@ -83,6 +88,8 @@
 
 
                                     </tr>
+
+
                                 </tbody>
                             </table>
                         </div>

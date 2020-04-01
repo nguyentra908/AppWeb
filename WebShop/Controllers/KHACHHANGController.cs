@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
+using WebShop.Models;
+
 namespace WebShop.Controllers
 {
     public class KHACHHANGController : Controller
     {
-
+        WEBContext db = new WEBContext();
         //customer
         public IActionResult Index()
         {
@@ -22,7 +24,9 @@ namespace WebShop.Controllers
        
         public IActionResult Master()
         {
-            return View("trangchu");
+            List<Hang> hangs = db.Hang.ToList();
+            return View(hangs);
+           
         }
 
         public IActionResult TrangChu()
@@ -60,6 +64,6 @@ namespace WebShop.Controllers
         {
             return View("vvv");
         }
-
+      
     }
 }
