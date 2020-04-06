@@ -38,8 +38,8 @@ namespace WebApplication1.Controllers
 
         public IActionResult TrangChu()
         {
-           // List<Hang> hangs = Context.Hang.ToList();
-            return View("trangchu");
+           List<Hang> hangs = Context.Hang.ToList();
+            return PartialView(hangs);
         }
         public IActionResult DangNhap()
         {
@@ -67,7 +67,7 @@ namespace WebApplication1.Controllers
 
         //Shared
         
-        public PartialViewResult Menu()
+        public PartialViewResult _Menu()
         {
             List<Hang> hangs = Context.Hang.ToList();
             return PartialView(hangs);
