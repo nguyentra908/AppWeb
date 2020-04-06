@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WebApplication1.Models
 {
-    public partial class Hang
+    public  class Hang
     {
         public Hang()
         {

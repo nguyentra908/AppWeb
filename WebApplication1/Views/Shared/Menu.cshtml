@@ -1,0 +1,11 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model List<Hang>
+
+
+@foreach (var item in Model)
+{
+    <li><a style="font-size:12px;" href="./products.html">@item.Tenhang</a></li>
+}

@@ -1,48 +1,145 @@
-﻿<!DOCTYPE html>
+﻿
+
+@model IEnumerable<Hang>
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebApplication1</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <meta charset="utf-8">
+    <title>Products 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+    <!-- bootstrap -->
+    <link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="~/themes/css/bootstrappage.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/themes/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="themes/css/font-awesome.min2.css"> -->
+    <link rel="stylesheet" type="text/css" href="~/themes/css/font-awesome.min3.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <!-- global styles -->
+    <link href="~/themes/css/flexslider.css" rel="stylesheet" />
+    <link href="~/themes/css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/themes/css/jquery-ui.min.css">
+    <!-- scripts -->
+
+    <script src="~/themes/js/jquery-1.7.2.min.js"></script>
+    <script src="~/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/themes/js/superfish.js"></script>
+    <script src="~/themes/js/jquery.scrolltotop.js"></script>
+    <script type="text/javascript" src="~/themes/js/jquery-ui.min.js"></script>
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebApplication1</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+    <div id="top-bar" class="container">
+        <div class="row">
+            <div class="span4">
+                <form method="POST" class="search_form">
+                    <div class="input-group">
+                        <input type="text" class="search-query form-control input-group" Placeholder="My laptop.">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary rounded-circle btnpro" type="button" id="btn-search">
+                                <span class="fa fa-search"></span>
+                            </button>
+                        </span>
+
+                    </div>
+                </form>
+            </div>
+            <div class="span8">
+                <div class="account pull-right">
+                    <ul class="user-menu">
+                        <li><a href="https://localhost:44380/HOME/TaiKhoan">Tài khoản</a></li>
+                        <li><a href="https://localhost:44380/HOME/GioHang">Giỏ hàng</a></li>
+                        <li><a href="https://localhost:44380/HOME/DangNhap">Đăng nhập</a></li>
                     </ul>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - WebApplication1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+    </div>
+    <div id="wrapper" class="container">
+        <section class="navbar main-menu">
+            <div class="navbar-inner main-menu">
+                <a href="https://localhost:44380 " class="logo pull-left"><h4 class="title">Di ĐỘNG THÔNG MINH </h4></a>
+                <nav id="menu" class="pull-right">
+                    <ul>
+                        <partial name="Menu.cshtml">
+</ul>
+                </nav>
+            </div>
+        </section>
+        <section class="homepage-slider" id="home-slider">
+            <div>
+                <img style="width: 1190px;height: 400px;" src="https://didongthongminh.vn/upload_images/2020/03/Slide-Samsung-Nhap-khau-2.png" alt="anh bia 1" />
+            </div>
+
+
+        </section>
+        <section class="header_text">
+            Website chúng tôi chuyên cung cấp các sản phẩm chất lượng có uy tín và mới nhất trên thị trường hiện nay
+            <br />Hãy ghé thăm trang web của chúng tôi và đừng bỏ lỡ các sản phẩm mới nhé!
+        </section>
+        <section class="main-content">
+            @RenderBody()
+        </section>
+        <section style="background-color: #857474;" id="footer-bar">
+            <div class="row">
+                <div class="span3">
+                    <h4>Điều Hướng</h4>
+                    <ul class="nav">
+                        <li><a href="">Trang chủ</a></li>
+                        <li><a href="">Thông tin</a></li>
+                        <li><a href="">Liên hệ</a></li>
+                        <li><a href="">Giỏ hàng</a></li>
+                        <li><a href="">Đăng nhập</a></li>
+                    </ul>
+                </div>
+                <div class="span4">
+                    <h4>My Account</h4>
+                    <ul class="nav">
+                        <li><a href="#">Tài khoản của tôi</a></li>
+                        <li><a href="#">Lịch sử đặt hàng</a></li>
+                        <li><a href="#">Danh sách yêu thích</a></li>
+                        <!-- <li><a href="#">Làm mới</a></li> -->
+                    </ul>
+                </div>
+                <div class="span5">
+                    <p class="logo"><!-- <img src="themes/images/logo.png" class="site_logo" alt=""> --><h4>ĐIỆN THOẠI</h4></p>
+                    <p style="color: white;">
+                        Website chúng tôi chuyên cung cấp các sản phẩm chất lượng có uy tín và mới nhất trên thị trường hiện nay
+                        <br />Hãy ghé thăm trang web của chúng tôi và đừng bỏ lỡ các sản phẩm mới nhé!
+                    </p>
+                    <div style="margin-left: 60px;">
+                        <a href="#" class="button">
+                            <i class="fab fa-facebook-f fa-lg"></i>
+                        </a>
+                        <a href="#" class="button">
+                            <i class="fab fa-twitter fa-lg"></i>
+                        </a>
+                        <a href="#" class="button">
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="copyright">
+            <span>Copyright 2013 bootstrappage template  All right reserved.</span>
+        </section>
+
+
+
+
+    </div>
+    <script src="~/themes/js/common.js"></script>
+    <script src="~/themes/js/jquery.flexslider-min.js"></script>
+
 </body>
 </html>

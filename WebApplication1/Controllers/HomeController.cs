@@ -28,21 +28,18 @@ namespace WebApplication1.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult _Layout()
         {
 
             List<Hang> hangs = Context.Hang.ToList();
             return View(hangs);
         }
+     
 
-        public IActionResult Master()
-        {
-            return View();
-        }
         public IActionResult TrangChu()
         {
-            List<Hang> hangs = Context.Hang.ToList();
-            return View(hangs);
+           // List<Hang> hangs = Context.Hang.ToList();
+            return View("trangchu");
         }
         public IActionResult DangNhap()
         {
@@ -66,9 +63,14 @@ namespace WebApplication1.Controllers
             List<Hang> hangs = Context.Hang.ToList();
             return View(hangs);
         }
-        public IActionResult Privacy()
+       
+
+        //Shared
+        
+        public PartialViewResult Menu()
         {
-            return View();
+            List<Hang> hangs = Context.Hang.ToList();
+            return PartialView(hangs);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
