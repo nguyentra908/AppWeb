@@ -1,7 +1,7 @@
 ﻿
 
-@model IEnumerable<Hang>
 
+@model IEnumerable<WebApplication1.Models.Hang>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,8 +68,12 @@
                 <a href="https://localhost:44380 " class="logo pull-left"><h4 class="title">Di ĐỘNG THÔNG MINH </h4></a>
                 <nav id="menu" class="pull-right">
                     <ul>
-                        <partial name="_Menu.cshtml">
-</ul>
+
+
+                     @await Component.InvokeAsync("Menu");
+
+
+                    </ul>
                 </nav>
             </div>
         </section>

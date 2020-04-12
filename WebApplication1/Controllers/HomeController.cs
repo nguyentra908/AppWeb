@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using WebApplication1.Models;
@@ -12,7 +14,7 @@ namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
     {
-      //  WEBContext db = new WEBContext();
+        //  WEBContext db = new WEBContext();
         private WEBContext Context;
 
         [ActivatorUtilitiesConstructor]
@@ -31,47 +33,49 @@ namespace WebApplication1.Controllers
         public IActionResult _Layout()
         {
 
-            List<Hang> hangs = Context.Hang.ToList();
-            return View(hangs);
+            return View();
         }
-     
 
         public IActionResult TrangChu()
         {
-           List<Hang> hangs = Context.Hang.ToList();
-            return PartialView(hangs);
+            return PartialView();
         }
         public IActionResult DangNhap()
         {
-            List<Hang> hangs = Context.Hang.ToList();
-            return View(hangs);
+
+            return View();
         }
         public IActionResult TaiKhoan()
         {
-            List<Hang> hangs = Context.Hang.ToList();
-            return View(hangs);
+
+            return View();
         }
 
         public IActionResult GioHang()
         {
-            List<Hang> hangs = Context.Hang.ToList();
-            return View(hangs);
+
+            return View();
         }
 
         public IActionResult ChiTietSanPham()
         {
-            List<Hang> hangs = Context.Hang.ToList();
-            return View(hangs);
-        }
-       
 
-        //Shared
-        
-        public PartialViewResult _Menu()
+            return View();
+        }
+
+
+
+
+
+
+        // Chi tiet San Pham
+        public async Task<IActionResult> ChiTietSP(int? id)
         {
+
             List<Hang> hangs = Context.Hang.ToList();
             return PartialView(hangs);
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
