@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication1.Models
 {
     public partial class Users
     {
+       
         public int Id { get; set; }
         public string FullName { get; set; }
         public string Role { get; set; }

@@ -1,8 +1,5 @@
 ﻿
 
-
-@model IEnumerable<WebApplication1.Models.Hang>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +53,7 @@
                     <ul class="user-menu">
                         <li><a href="https://localhost:44380/HOME/TaiKhoan">Tài khoản</a></li>
                         <li><a href="https://localhost:44380/HOME/GioHang">Giỏ hàng</a></li>
-                        <li><a href="https://localhost:44380/HOME/DangNhap">Đăng nhập</a></li>
+                        <li><a href="https://localhost:44380/Users/create">Đăng nhập</a></li>
                     </ul>
                 </div>
             </div>
@@ -68,10 +65,7 @@
                 <a href="https://localhost:44380 " class="logo pull-left"><h4 class="title">Di ĐỘNG THÔNG MINH </h4></a>
                 <nav id="menu" class="pull-right">
                     <ul>
-
-
-                     @await Component.InvokeAsync("Menu");
-
+                        @await Component.InvokeAsync("Menu");
 
                     </ul>
                 </nav>

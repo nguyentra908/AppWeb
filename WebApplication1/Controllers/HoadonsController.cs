@@ -9,22 +9,23 @@ using WebApplication1.Models;
 
 namespace DOAN.Controllers
 {
-    public class UsersController : Controller
+    public class HoadonsController : Controller
     {
         private readonly WEBContext _context;
 
-        public UsersController(WEBContext context)
+        public HoadonsController(WEBContext context)
         {
             _context = context;
         }
 
-        // GET: Users
+        // GET: Hoadons
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Users.ToListAsync());
+            var wEBContext = _context.Hoadon.Include(h => h.IdkhNavigation);
+            return View(await wEBContext.ToListAsync());
         }
 
-        // GET: Users/Details/5
+        // GET: Hoadons/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +33,42 @@ namespace DOAN.Controllers
                 return NotFound();
             }
 
-            var users = await _context.Users
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (users == null)
+            var hoadon = await _context.Hoadon
+                .Include(h => h.IdkhNavigation)
+                .FirstOrDefaultAsync(m => m.Mahd == id);
+            if (hoadon == null)
             {
                 return NotFound();
             }
 
-            return View(users);
+            return View(hoadon);
         }
 
-        // GET: Users/Create
+        // GET: Hoadons/Create
         public IActionResult Create()
         {
+            ViewData["Idkh"] = new SelectList(_context.Khachhang, "Id", "Id");
             return View();
         }
 
-        // POST: Users/Create
+        // POST: Hoadons/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FullName,Role,Diachi,Sdt,Email,Password,RememberToken,CreatedAt,UpdatedAt")] Users users)
+        public async Task<IActionResult> Create([Bind("Mahd,Ngayhd,Tongtien,Idkh,Ghichu,CreatedAt,UpdatedAt,Tinhtrang")] Hoadon hoadon)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(users);
+                _context.Add(hoadon);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(users);
+            ViewData["Idkh"] = new SelectList(_context.Khachhang, "Id", "Id", hoadon.Idkh);
+            return View(hoadon);
         }
 
-        // GET: Users/Edit/5
+        // GET: Hoadons/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +76,23 @@ namespace DOAN.Controllers
                 return NotFound();
             }
 
-            var users = await _context.Users.FindAsync(id);
-            if (users == null)
+            var hoadon = await _context.Hoadon.FindAsync(id);
+            if (hoadon == null)
             {
                 return NotFound();
             }
-            return View(users);
+            ViewData["Idkh"] = new SelectList(_context.Khachhang, "Id", "Id", hoadon.Idkh);
+            return View(hoadon);
         }
 
-        // POST: Users/Edit/5
+        // POST: Hoadons/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,Role,Diachi,Sdt,Email,Password,RememberToken,CreatedAt,UpdatedAt")] Users users)
+        public async Task<IActionResult> Edit(int id, [Bind("Mahd,Ngayhd,Tongtien,Idkh,Ghichu,CreatedAt,UpdatedAt,Tinhtrang")] Hoadon hoadon)
         {
-            if (id != users.Id)
+            if (id != hoadon.Mahd)
             {
                 return NotFound();
             }
@@ -96,12 +101,12 @@ namespace DOAN.Controllers
             {
                 try
                 {
-                    _context.Update(users);
+                    _context.Update(hoadon);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UsersExists(users.Id))
+                    if (!HoadonExists(hoadon.Mahd))
                     {
                         return NotFound();
                     }
@@ -112,10 +117,11 @@ namespace DOAN.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(users);
+            ViewData["Idkh"] = new SelectList(_context.Khachhang, "Id", "Id", hoadon.Idkh);
+            return View(hoadon);
         }
 
-        // GET: Users/Delete/5
+        // GET: Hoadons/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +129,31 @@ namespace DOAN.Controllers
                 return NotFound();
             }
 
-            var users = await _context.Users
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (users == null)
+            var hoadon = await _context.Hoadon
+                .Include(h => h.IdkhNavigation)
+                .FirstOrDefaultAsync(m => m.Mahd == id);
+            if (hoadon == null)
             {
                 return NotFound();
             }
 
-            return View(users);
+            return View(hoadon);
         }
 
-        // POST: Users/Delete/5
+        // POST: Hoadons/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var users = await _context.Users.FindAsync(id);
-            _context.Users.Remove(users);
+            var hoadon = await _context.Hoadon.FindAsync(id);
+            _context.Hoadon.Remove(hoadon);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UsersExists(int id)
+        private bool HoadonExists(int id)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return _context.Hoadon.Any(e => e.Mahd == id);
         }
     }
 }

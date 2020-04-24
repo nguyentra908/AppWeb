@@ -335,9 +335,7 @@ namespace WebApplication1.Models
             {
                 entity.ToTable("users");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.CreatedAt)
                     .HasColumnName("created_at")
@@ -375,7 +373,7 @@ namespace WebApplication1.Models
                     .HasColumnName("ROLE")
                     .HasMaxLength(30)
                     .IsUnicode(false)
-                    .HasDefaultValueSql("('khach')");
+                    .HasDefaultValueSql("('khachhang')");
 
                 entity.Property(e => e.Sdt)
                     .HasColumnName("SDT")

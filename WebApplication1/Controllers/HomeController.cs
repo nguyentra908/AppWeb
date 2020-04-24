@@ -38,7 +38,12 @@ namespace WebApplication1.Controllers
 
         public IActionResult TrangChu()
         {
-            return PartialView();
+
+
+            List<Sanpham> hangs = Context.Sanpham.ToList();
+          
+            return PartialView(hangs);
+
         }
         public IActionResult DangNhap()
         {
@@ -57,22 +62,30 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public IActionResult ChiTietSanPham()
+        public async Task<IActionResult> ChiTietSanPham(int? id)
         {
 
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+           
+            var sanpham = await Context.Sanpham
+                .Include(h => h.HangNavigation)
+                .FirstOrDefaultAsync(m => m.Masp == id);
+            if (sanpham == null)
+            {
+                return NotFound();
+            }
+
+            return View(sanpham);
         }
 
-
-
-
-
-
-        // Chi tiet San Pham
-        public async Task<IActionResult> ChiTietSP(int? id)
+        // Loai San Pham
+        public async Task<IActionResult> LoaiSP(int? id)
         {
 
-            List<Hang> hangs = Context.Hang.ToList();
+            List<Sanpham> hangs = Context.Sanpham.Where(p => p.Hang == id).ToList();
             return PartialView(hangs);
         }
 

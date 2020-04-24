@@ -141,11 +141,6 @@ INSERT INTO khachhang ( [TEN], [EMAIL], [DIACHI], [SDT], [GHICHU], [created_at],
 ('nguyen', 'nguyen@gmail.com', 'dia3', '1234567890', NULL, '2019-12-20 21:03:53', '2019-12-20 21:03:53'),
 ('nguyen', 'nguyen@gmail.com', 'dia3', '1234567890', NULL, '2019-12-20 21:04:11', '2019-12-20 21:04:11'),
 ('nguyen', 'nguyen@gmail.com', 'dia3', '1234567890', NULL, '2019-12-20 21:04:29', '2019-12-20 21:04:29'),
-('nguyen', 'nguyen@gmail.com', 'dia3', '1234567890', NULL, '2019-12-20 21:07:00', '2019-12-20 21:07:00'),
-('nguyen', 'nguyen@gmail.com', 'dia3', '1234567890', NULL, '2019-12-20 21:08:15', '2019-12-20 21:08:15'),
-('nguyen', 'nguyen@gmail.com', 'ngày 03', '1234567890', NULL, '2019-12-21 22:34:02', '2019-12-21 22:34:02'),
-('nguyen', 'nguyen@gmail.com', 'ngày 03', '1234567890', NULL, '2019-12-21 22:36:29', '2019-12-21 22:36:29'),
-('nguyen', 'nguyen@gmail.com', 'ngày 03', '1234567890', NULL, '2019-12-21 22:38:34', '2019-12-21 22:38:34');
 
 -- --------------------------------------------------------
 
@@ -195,24 +190,7 @@ INSERT INTO sanpham ( [TENSP], [HANG], [MOTA], [NAMSX], [GIA], [GIAKHUYENMAI], [
 ( 'Dien thoai di dong thong minh', 2, NULL, NULL, 1000000, NULL, '6s-plus-8.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ( 'Dien thoai di dong thong minh', 1, NULL, NULL, 1000000, NULL, '11.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ( 'Dien thoai di dong thong minh', 2, NULL, NULL, 1000000, NULL, '11-den.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-( 'Điện thoại thông minh', 1, NULL, NULL, 1000000, NULL, '11-do.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-( 'Điện thoại thông minh', 2, NULL, NULL, 1000000, NULL, '11-pro-max-xam.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-( 'Điện thoại thông minh', 6, NULL, NULL, 1000000, NULL, 'xr.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-( 'Điện thoại thông minh', 4, NULL, NULL, 1000000, NULL, '11-pro-max-bac.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-( 'Điện thoại thông minh', 3, NULL, NULL, 1000000, NULL, '11-vang.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-( 'Điện thoại thông minh', 1, NULL, NULL, 1000000, NULL, '11-pro-max-vang.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-( 'Điện thoại thông minh', 5, NULL, NULL, 1000000, NULL, 'xr-den.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-( 'Điện thoại thông minh', 3, NULL, NULL, 1000000, NULL, 'xr-xanh.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-( 'Điện thoại thông minh', 7, NULL, NULL, 1000000, NULL, 'xr-vang.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-( 'Điện thoại thông minh', 2, NULL, NULL, 1000000, NULL, 'xr-trang.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-( 'Điện thoại thông minh', 1, NULL, NULL, 1000000, NULL, 'xr-nau.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-( 'Điện thoại thông minh', 4, NULL, NULL, 1000000, NULL, 'xs-max.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-( 'Điện thoại thông minh', 2, NULL, NULL, 1000000, NULL, 'xs-max-2.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-( 'Điện thoại thông minh', 3, NULL, NULL, 1000000, NULL, 'xs-max-1.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-( 'Điện thoại thông minh', 1, NULL, NULL, 1000000, NULL, 'xs-max-4.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-( 'Điện thoại thông minh', 8, NULL, NULL, 1000000, NULL, '6s-plus-7.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-( 'Điện thoại thông minh', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-( 'dien thoai', 1, 'ok', NULL, 1000000, 90000, NULL, '70in', '30', '50', '20', NULL, NULL, NULL, NULL, NULL, NULL);
+
 
 -- --------------------------------------------------------
 
@@ -248,10 +226,12 @@ INSERT INTO taikhoan ([TENTK], [PASS], [QUYEN]) VALUES
 -- Cấu trúc bảng cho bảng `users`
 --
 
+
+
 CREATE TABLE users (
-  [ID] int CHECK ([ID] > 0) NOT NULL,
+  [ID] int CHECK ([ID] > 0) NOT NULL  IDENTITY(1,1),
   [FULL_NAME] varchar(30) DEFAULT NULL,
-  [ROLE] varchar(30) NOT NULL DEFAULT 'khach',
+  [ROLE] varchar(30) NOT NULL DEFAULT 'khachhang',
   [DIACHI] varchar(100) DEFAULT NULL,
   [SDT] char(10) DEFAULT NULL,
   [email] varchar(255) DEFAULT NULL,
@@ -261,14 +241,16 @@ CREATE TABLE users (
   [updated_at] datetime2(0) NOT NULL DEFAULT current_timestamp
 )  ;
 
+delete users;
 --
 -- Đang đổ dữ liệu cho bảng `users`
 --
 
-INSERT INTO users ([ID], [FULL_NAME], [ROLE], [DIACHI], [SDT], [email], [password], [remember_token], [created_at], [updated_at]) VALUES
-(12, 'nguyễn', 'khach', 'khu b', '0377842878', 'kimthao581999@gmail.com', '$2y$10$TBXBMvPwjQJrfdYsjzoez./Ihk90G5rodeN6qaTGb1Hz3l8JOp.Ji', NULL, '2019-12-07 23:39:19', '2019-12-07 23:39:19'),
-(13, 'Quỳnh', 'khach', '3', '1140000000', 'nguyen@gmail.com', '$2y$10$uDQ1E3eQIcRGCDuRz2cW..bZpdi1.7PTS8iHiU4M4fBK3eoZK5lfy', NULL, '2019-12-20 20:54:53', '2019-12-20 20:54:53');
+INSERT INTO users ([FULL_NAME], [ROLE], [DIACHI], [SDT], [email], [password], [remember_token], [created_at], [updated_at]) VALUES
+( 'nguyễn', 'khach', 'khu b', '0377842878', 'thao581999@gmail.com', '$2y$10$TBXBMvPwjQJrfdYsjzoez./Ihk90G5rodeN6qaTGb1Hz3l8JOp.Ji', NULL, '2019-12-07 23:39:19', '2019-12-07 23:39:19'),
+( 'Quỳnh', 'khach', '3', '1140000000', 'nguyen@gmail.com', '$2y$10$uDQ1E3eQIcRGCDuRz2cW..bZpdi1.7PTS8iHiU4M4fBK3eoZK5lfy', NULL, '2019-12-20 20:54:53', '2019-12-20 20:54:53');
 
+select *from users;
 --
 -- Chỉ mục cho các bảng đã đổ
 --

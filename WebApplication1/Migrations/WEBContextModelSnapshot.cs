@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication1.Models;
 
-namespace WebApplication1.Migrations
+namespace DOAN.Migrations
 {
     [DbContext(typeof(WEBContext))]
     partial class WEBContextModelSnapshot : ModelSnapshot
@@ -437,7 +437,8 @@ namespace WebApplication1.Migrations
                         .HasColumnType("datetime2(0)")
                         .HasDefaultValueSql("(getdate())");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK__users__3214EC277A7E84E6");
 
                     b.ToTable("users");
                 });

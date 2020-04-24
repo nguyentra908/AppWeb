@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WebApplication1.Migrations
+namespace DOAN.Migrations
 {
     public partial class Initial : Migration
     {
@@ -56,9 +56,10 @@ namespace WebApplication1.Migrations
                 name: "users",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false),
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     FULL_NAME = table.Column<string>(unicode: false, maxLength: 30, nullable: true),
-                    ROLE = table.Column<string>(unicode: false, maxLength: 30, nullable: false, defaultValueSql: "('khach')"),
+                    ROLE = table.Column<string>(unicode: false, maxLength: 30, nullable: false, defaultValueSql: "('khachhang')"),
                     DIACHI = table.Column<string>(unicode: false, maxLength: 100, nullable: true),
                     SDT = table.Column<string>(unicode: false, fixedLength: true, maxLength: 10, nullable: true),
                     email = table.Column<string>(unicode: false, maxLength: 255, nullable: true),

@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication1.Models;
 
-namespace WebApplication1.Migrations
+namespace DOAN.Migrations
 {
     [DbContext(typeof(WEBContext))]
-    [Migration("20200331073816_Initial")]
+    [Migration("20200417153612_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -377,8 +377,11 @@ namespace WebApplication1.Migrations
             modelBuilder.Entity("WebApplication1.Models.Users", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("ID")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
@@ -439,7 +442,8 @@ namespace WebApplication1.Migrations
                         .HasColumnType("datetime2(0)")
                         .HasDefaultValueSql("(getdate())");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK__users__3214EC277A7E84E6");
 
                     b.ToTable("users");
                 });

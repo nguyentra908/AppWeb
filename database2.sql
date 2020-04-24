@@ -74,16 +74,13 @@ CREATE TABLE hang (
 --
 -- Đang đổ dữ liệu cho bảng `hang`
 --
-
+delete from hang;
 INSERT INTO hang ([TENHANG]) VALUES
 ( 'Iphone'),
 ( 'SamSung '),
 ( 'Xiaomi'),
 ( 'Oppo'),
-( 'Nokia'),
 ( 'Realmi'),
-( 'Sony'),
-( 'LG'),
 ( 'Lenovo');
 
 -- --------------------------------------------------------
@@ -266,8 +263,8 @@ CREATE TABLE users (
 --
 
 INSERT INTO users ([ID], [FULL_NAME], [ROLE], [DIACHI], [SDT], [email], [password], [remember_token], [created_at], [updated_at]) VALUES
-(12, 'nguyễn', 'khach', 'khu b', '0377842878', 'kimthao581999@gmail.com', '$2y$10$TBXBMvPwjQJrfdYsjzoez./Ihk90G5rodeN6qaTGb1Hz3l8JOp.Ji', NULL, '2019-12-07 23:39:19', '2019-12-07 23:39:19'),
-(13, 'Quỳnh', 'khach', '3', '1140000000', 'nguyen@gmail.com', '$2y$10$uDQ1E3eQIcRGCDuRz2cW..bZpdi1.7PTS8iHiU4M4fBK3eoZK5lfy', NULL, '2019-12-20 20:54:53', '2019-12-20 20:54:53');
+(1, 'nguyễn', 'khach', 'khu b', '0377842878', 'kimthao581999@gmail.com', '$2y$10$TBXBMvPwjQJrfdYsjzoez./Ihk90G5rodeN6qaTGb1Hz3l8JOp.Ji', NULL, '2019-12-07 23:39:19', '2019-12-07 23:39:19'),
+(12, 'Quỳnh', 'khach', '3', '1140000000', 'nguyen@gmail.com', '$2y$10$uDQ1E3eQIcRGCDuRz2cW..bZpdi1.7PTS8iHiU4M4fBK3eoZK5lfy', NULL, '2019-12-20 20:54:53', '2019-12-20 20:54:53');
 
 --
 -- Chỉ mục cho các bảng đã đổ
