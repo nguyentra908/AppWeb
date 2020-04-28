@@ -56,10 +56,22 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public IActionResult GioHang()
+        public async Task<IActionResult> GioHang(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-            return View();
+            var sanpham = await Context.Sanpham
+                .Include(h => h.HangNavigation)
+                .FirstOrDefaultAsync(m => m.Masp == id);
+            if (sanpham == null)
+            {
+                return NotFound();
+            }
+
+            return PartialView(sanpham);
         }
 
         public async Task<IActionResult> ChiTietSanPham(int? id)
@@ -78,7 +90,7 @@ namespace WebApplication1.Controllers
                 return NotFound();
             }
 
-            return View(sanpham);
+            return PartialView(sanpham);
         }
 
         // Loai San Pham

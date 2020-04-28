@@ -5,20 +5,27 @@
 }
 
 <div class="row">
-    <div class="span9" >
+    <div class="span9">
         <div class="row" style="background:#f5f0f0">
             <div class="span4">
                 <h3><span> @Html.DisplayFor(model => model.Tensp)</span></h3>
                 <a asp-action="ChiTietSanPham">
                     <img src=" @Html.DisplayFor(model => model.Anhdaidien)" alt="">
                 </a>
-              
+
             </div>
             <div class="span5" style="margin-top:100px">
-                <h4>
-                    <strong>Giá:</strong> <span>@Html.DisplayFor(model => model.Gia)</span><br>
-                    <strong>Giá khuyến mãi:</strong> <span>@Html.DisplayFor(model => model.Giakhuyenmai)</span><br>
-                </h4>
+                <h3>
+                    @if (Model.Giakhuyenmai == null)
+                    {
+                        <strong>Giá:</strong> <span>@Model.Gia VNĐ</span><br>
+                    }
+                    else
+                    {
+                        <strong>Giá khuyến mãi:</strong> <span>@Model.Giakhuyenmai VNĐ</span><br>
+                        <strong>Giá:</strong> <strike>@Model.Gia VNĐ</strike>
+                    }
+                </h3>
                 <address>
                     <strong>Bộ nhớ:</strong> <span> @Html.DisplayFor(model => model.Ram)</span><br>
                     <strong>Tình trạng:</strong> <span>Còn hàng</span><br>
@@ -28,71 +35,54 @@
 
             </div>
             <div class="span5">
-
+                <div class="span5">
+                    <button class="btn btn-inverse" type="button"><a  asp-action="GioHang" asp-route-id="@Model.Masp">MUA NGAY</a></button>
+                </div>
 
             </div>
         </div>
         <div class="row">
             <div class="span9">
                 <ul class="nav nav-tabs" id="myTab">
-                    <li class="active"><a href="#home">Miêu tả</a></li>
-                    <li class=""><a href="#profile">Thông tin sản phẩm</a></li>
+                    <li class="active"><a href="#home">Tông tin sản phẩm</a></li>
+                  
                 </ul>
                 <div class="tab-content">
-                    <!-- <div class="tab-pane active" id="home">{{$sanpham->MOTA}}</div> -->
-                    <div class="tab-pane" id="profile">
+                    <div class="tab-pane active" id="home">
                         <table class="table table-striped shop_attributes">
                             <tbody>
                                 <tr class="">
-                                    <th>Màn hình</th>
-                                    <td>{{$sanpham->MANHINH}}</td>
-                                </tr>
-                                <tr class="">
-                                    <th>Camera trước</th>
-                                    <td>{{$sanpham->CAMERATRUOC}}</td>
-                                </tr>
-                                <tr class="">
-                                    <th>Camera sau</th>
-                                    <td>{{$sanpham->CAMERASAU}}</td>
-                                </tr>
-                                <tr class="">
-                                    <th>RAM</th>
-                                    <td>{{$sanpham->RAM}}</td>
-                                </tr>
-                                <tr class="">
-                                    <th>Bộ nhớ trong</th>
-                                    <td>{{$sanpham->BONHOTRONG}}</td>
-                                </tr>
-                                <tr class="">
                                     <th>CPU</th>
-                                    <td>{{$sanpham->CPU}}</td>
+                                    <td>@Model.Cpu</td>
+                                </tr>
+                                <tr class="alt">
+                                    <th>RAM</th>
+                                    <td>@Model.Ram</td>
                                 </tr>
                                 <tr class="">
-                                    <th>GPU</th>
-                                    <td>{{$sanpham->GPU}}</td>
+                                    <th>PIN</th>
+                                    <td>@Model.Pin</td>
                                 </tr>
-                                <tr class="">
-                                    <th>Dung lượng pin</th>
-                                    <td>{{$sanpham->PIN}}</td>
+                                <tr class="alt">
+                                    <th>CAMERA TRƯỚC</th>
+                                    <td>@Model.Cameratruoc</td>
                                 </tr>
-                                <tr class="">
-                                    <th>Hệ điều hành</th>
-                                    <td>{{$sanpham->OS}}</td>
+                                <tr class="alt">
+                                    <th>CAMERA SAU</th>
+                                    <td>@Model.Camerasau</td>
                                 </tr>
-                                <tr class="">
-                                    <th>Thẻ sim</th>
-                                    <td>{{$sanpham->SIM}}</td>
-                                </tr>
+                             
                             </tbody>
                         </table>
                     </div>
+                
                 </div>
             </div>
 
             <div class="span9">
                 <br>
                 <h4 class="title">
-                    <span class="pull-left"><span class="text"><strong>Sản phẩm</strong> cùng loại</span></span>
+                    <span class="pull-left"><span class="text"><strong>Sản phẩm</strong> khác</span></span>
                     <span class="pull-right">
                         <a class="left button" href="#myCarousel-1" data-slide="prev"></a><a class="right button" href="#myCarousel-1" data-slide="next"></a>
                     </span>
@@ -101,141 +91,15 @@
                     <div class="carousel-inner">
                         <div class="active item">
                             <ul class="thumbnails listing-products">
-                                <li class="span3">
-                                    <div class="product-box">
-                                        <span class="sale_tag"></span>
-                                        <a href="product_detail.html"><img alt="" src="source/anh_chitiet_sanpham/2-pro.png"></a><br />
-                                        <a href="product_detail.html" class="title">Điện thoại iPhone 11 Pro Max 256GB</a><br />
-                                        <!-- <a href="#" class="category">i5 8250U/4GB/1TB/Win10</a> -->
-                                        <p class="price">39.990.000₫</p>
-                                    </div>
-                                </li>
-                                <li class="span3">
-                                    <div class="product-box">
-                                        <span class="sale_tag"></span>
-                                        <a href="product_detail.html"><img alt="" src="source/anh_chitiet_sanpham/ap1.png"></a><br />
-                                        <a href="product_detail.html" class="title">Điện thoại iPhone 11 Pro Max 256GB</a><br />
-                                        <!-- <a href="#" class="category">Core i5 - 7200U/4GB/500GB/14 HD</a> -->
-                                        <p class="price">37.990.000₫</p>
-                                    </div>
-                                </li>
-                                <li class="span3">
-                                    <div class="product-box">
-                                        <a href="product_detail.html"><img alt="" src="source/anh_chitiet_sanpham/xs-max.png"></a><br />
-                                        <a href="product_detail.html" class="title">Điện thoại iPhone Xs Max 256GB</a><br />
-                                        <!-- <a href="#" class="category">i5 8250U/4GB/1TB/Win10</a> -->
-                                        <p class="price">33.990.000₫</p>
-                                    </div>
-                                </li>
+                                @await Component.InvokeAsync("SanPham");
                             </ul>
                         </div>
-                        <div class="item">
-                            <ul class="thumbnails listing-products">
-                                <li class="span3">
-                                    <div class="product-box">
-                                        <span class="sale_tag"></span>
-                                        <a href="product_detail.html"><img alt="" src="source/anh_chitiet_sanpham/ap1.png"></a><br />
-                                        <a href="product_detail.html" class="title">Điện thoại iPhone 11 64GB</a><br />
-                                        <!-- <a href="#" class="category">N3350/2GB/500GB/Win10</a> -->
-                                        <p class="price">21.990.000₫</p>
-                                    </div>
-                                </li>
-                                <li class="span3">
-                                    <div class="product-box">
-                                        <a href="product_detail.html"><img alt="" src="source/anh_chitiet_sanpham/ap2.png"></a><br />
-                                        <a href="product_detail.html" class="title">Điện thoại iPhone 7 Plus 32GB</a><br />
-                                        <!-- <a href="#" class="category">N3350/2GB/500GB/Win10</a> -->
-                                        <p class="price">12.990.000₫</p>
-                                    </div>
-                                </li>
-                                <li class="span3">
-                                    <div class="product-box">
-                                        <span class="sale_tag"></span>
-                                        <a href="product_detail.html"><img alt="" src="source/anh_chitiet_sanpham/ap3.png"></a><br />
-                                        <a href="product_detail.html" class="title">Điện thoại iPhone 6s Plus 32GB</a><br />
-                                        <!-- <a href="#" class="category">i3 6100U/4GB/1TB/15.6"/Win10</a> -->
-                                        <p class="price">9.990.000đ</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
 
-            <div class="span9">
-                <br>
-                <h4 class="title">
-                    <span class="pull-left"><span class="text"><strong>Sản phẩm</strong> cùng nhà sản xuất</span></span>
-                    <span class="pull-right">
-                        <a class="left button" href="#myCarousel-2" data-slide="prev"></a><a class="right button" href="#myCarousel-2" data-slide="next"></a>
-                    </span>
-                </h4>
-                <div id="myCarousel-2" class="carousel slide">
-                    <div class="carousel-inner">
-                        <div class="active item">
-                            <ul class="thumbnails listing-products">
-                                <li class="span3">
-                                    <div class="product-box">
-                                        <span class="sale_tag"></span>
-                                        <a href="product_detail.html"><img alt="" src="source/anh_chitiet_sanpham/ap1.png"></a><br />
-                                        <a href="product_detail.html" class="title">Asus Swift SF315</a><br />
-                                        <!-- <a href="#" class="category">i5 8250U/4GB/1TB/Win10</a> -->
-                                        <p class="price">21.990.000₫</p>
-                                    </div>
-                                </li>
-                                <li class="span3">
-                                    <div class="product-box">
-                                        <span class="sale_tag"></span>
-                                        <a href="product_detail.html"><img alt="" src="source/anh_chitiet_sanpham/xs-max.png"></a><br />
-                                        <a href="product_detail.html" class="title">Asus Vostro 5468</a><br />
-                                        <!-- <a href="#" class="category">Core i5 - 7200U/4GB/500GB/14 HD</a> -->
-                                        <p class="price">12.990.000₫</p>
-                                    </div>
-                                </li>
-                                <li class="span3">
-                                    <div class="product-box">
-                                        <a href="product_detail.html"><img alt="" src="source/anh_chitiet_sanpham/2-pro.png"></a><br />
-                                        <a href="product_detail.html" class="title">Asus S510UA</a><br />
-                                        <!-- <a href="#" class="category">i5 8250U/4GB/1TB/Win10</a> -->
-                                        <p class="price">16.290.000đ</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="item">
-                            <ul class="thumbnails listing-products">
-                                <li class="span3">
-                                    <div class="product-box">
-                                        <span class="sale_tag"></span>
-                                        <a href="product_detail.html"><img alt="" src="source/anh_chitiet_sanpham/1-pro-max-xanh.png"></a><br />
-                                        <a href="product_detail.html" class="title">Điện thoại iPhone 11 64GB</a><br />
-                                        <!-- <a href="#" class="category">N3350/2GB/500GB/Win10</a> -->
-                                        <p class="price">6.290.000đ</p>
-                                    </div>
-                                </li>
-                                <li class="span3">
-                                    <div class="product-box">
-                                        <a href="product_detail.html"><img alt="" src="source/anh_chitiet_sanpham/ap2.png"></a><br />
-                                        <a href="product_detail.html" class="title">Điện thoại iPhone 11 64GB</a><br />
-                                        <!-- <a href="#" class="category">N3350/2GB/500GB/Win10</a> -->
-                                        <p class="price">39.990.000₫</p>
-                                    </div>
-                                </li>
-                                <li class="span3">
-                                    <div class="product-box">
-                                        <span class="sale_tag"></span>
-                                        <a href="product_detail.html"><img alt="" src="source/anh_chitiet_sanpham/3-pro.png"></a><br />
-                                        <a href="product_detail.html" class="title">Điện thoại iPhone 11 64GB</a><br />
-                                        <!-- <a href="#" class="category">i3 6100U/4GB/1TB/15.6"/Win10</a> -->
-                                        <p class="price">37.990.000₫</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
         </div>
     </div>
     <div class="span3 col">
@@ -243,13 +107,7 @@
             <br />
             <ul class="nav nav-list below">
                 <li class="nav-header">Nhãn hiệu</li>
-                <li><a href="products.html">Apple</a></li>
-                <li><a href="products.html">Samsung</a></li>
-                <li><a href="products.html">Opple</a></li>
-                <li><a href="products.html">Realme</a></li>
-                <li><a href="products.html">Xiaomi</a></li>
-                <li><a href="products.html">Lenovo</a></li>
-                <li><a href="products.html">Hãng khác</a></li>
+                @await Component.InvokeAsync("Menu");
             </ul>
         </div>
         <div class="block">

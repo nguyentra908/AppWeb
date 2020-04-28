@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@model IEnumerable<WebApplication1.Models.Sanpham>
+
+@if (Model != null)
+{
+    @foreach (var item in Model.OrderBy(p => p.Tensp).Take(6))
+    {
+        <li class="span3">
+            <div class="product-box">
+                <span class="sale_tag"></span>
+                <p>
+                    <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp">
+                        <img src="@item.Anhdaidien" alt="">
+                    </a>
+                </p>
+                <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>
+                <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="category">
+                    @if (item.Giakhuyenmai == null)
+                    {
+                        <strong style="font-size:20px">@item.Gia VNĐ</strong>
+                    }
+                    else
+                    {
+                        <strong style="font-size:20px">@item.Giakhuyenmai VNĐ</strong>
+                        <strike>@item.Gia VNĐ</strike>
+                    }
+                </a>
+
+
+            </div>
+        </li>
+
+    }
+
+
+}

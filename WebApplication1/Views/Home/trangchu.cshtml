@@ -41,9 +41,16 @@
                                                         </p>
                                                         <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>
                                                         <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="category">
-                                                            <p class="price">@item.Gia</p>
+                                                            @if (item.Giakhuyenmai == null)
+                                                            {
+                                                                <strong style="font-size:20px">@item.Gia VNĐ</strong>
+                                                            }
+                                                            else
+                                                            {
+                                                                <strong style="font-size:20px">@item.Giakhuyenmai VNĐ</strong>
+                                                                <strike>@item.Gia VNĐ</strike>
+                                                            }
                                                         </a>
-                                                     
 
                                                     </div>
                                                 </li>
@@ -65,7 +72,15 @@
                                                         </p>
                                                         <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>
                                                         <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="category">
-                                                            <p class="price">@item.Gia</p>
+                                                            @if (item.Giakhuyenmai == null)
+                                                            {
+                                                                <strong style="font-size:20px">@item.Gia VNĐ</strong>
+                                                            }
+                                                            else
+                                                            {
+                                                                <strong style="font-size:20px">@item.Giakhuyenmai VNĐ</strong>
+                                                                <strike>@item.Gia VNĐ</strike>
+                                                            }
                                                         </a>
 
 
@@ -89,7 +104,7 @@
                             <h4 class="title">
 
                                 <span class="pull-left">
-                                    <span class="text"><span class="line"><a href="http://localhost/lar-53/public/product_detail.html"><strong>Các sản phẩm nổi bật nhất</strong></a></span></span>
+                                    <span class="text"><span class="line"><a href="http://localhost/lar-53/public/product_detail.html"><strong>Các sản phẩm cao cấp</strong></a></span></span>
                                 </span>
 
                                 <span class="pull-right">
@@ -100,7 +115,7 @@
                                 <div class="carousel-inner">
                                     <div class="active item">
                                         <ul class="thumbnails">
-                                            @foreach (var item in Model.OrderBy(p => p.Tensp).Take(8))
+                                            @foreach (var item in Model.OrderByDescending(p => p.Gia).Take(4))
                                             {
                                                 <li class="span3">
                                                     <div class="product-box">
@@ -112,7 +127,15 @@
                                                         </p>
                                                         <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>
                                                         <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="category">
-                                                            <p class="price">@item.Gia</p>
+                                                            @if (item.Giakhuyenmai == null)
+                                                            {
+                                                                <strong style="font-size:20px">@item.Gia VNĐ</strong>
+                                                            }
+                                                            else
+                                                            {
+                                                                <strong style="font-size:20px">@item.Giakhuyenmai VNĐ</strong>
+                                                                <strike>@item.Gia VNĐ</strike>
+                                                            }
                                                         </a>
 
 
@@ -125,7 +148,7 @@
                                     </div>
                                     <div class="item">
                                         <ul class="thumbnails">
-                                            @foreach (var item in Model.OrderBy(p => p.Tensp).Skip(8).Take(8))
+                                            @foreach (var item in Model.OrderByDescending(p => p.Gia).Skip(4).Take(4))
                                             {
                                                 <li class="span3">
                                                     <div class="product-box">
@@ -137,7 +160,15 @@
                                                         </p>
                                                         <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>
                                                         <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="category">
-                                                            <p class="price">@item.Gia</p>
+                                                            @if (item.Giakhuyenmai == null)
+                                                            {
+                                                                <strong style="font-size:20px">@item.Gia VNĐ</strong>
+                                                            }
+                                                            else
+                                                            {
+                                                                <strong style="font-size:20px">@item.Giakhuyenmai VNĐ</strong>
+                                                                <strike>@item.Gia VNĐ</strike>
+                                                            }
                                                         </a>
 
 
@@ -148,6 +179,99 @@
                                         </ul>
                                     </div>
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="span12">
+         
+                            <div class="row">
+                                <div class="span12">
+                                    <h4 class="title">
+
+                                        <span class="pull-left">
+                                            <span class="text"><span class="line"><a href="product_detail.html"><strong>Các sản phẩm nổi bậc</strong></a></span></span>
+                                        </span>
+
+                                        <span class="pull-right">
+                                            <a class="left button" href="#myCarousel-4" data-slide="prev"></a><a class="right button" href="#myCarousel-4" data-slide="next"></a>
+                                        </span>
+                                    </h4>
+                                    <div id="myCarousel-4" class="myCarousel carousel slide">
+                                        <div class="carousel-inner">
+                                            <div class="active item">
+                                                <ul class="thumbnails">
+                                                    @foreach (var item in Model.OrderByDescending(p => p.Masp).Take(8))
+                                                    {
+                                                        <li class="span3">
+                                                            <div class="product-box">
+                                                                <span class="sale_tag"></span>
+                                                                <p>
+                                                                    <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp">
+                                                                        <img src="@item.Anhdaidien" alt="">
+                                                                    </a>
+                                                                </p>
+                                                                <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>
+                                                                <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="category">
+                                                                    @if (item.Giakhuyenmai == null)
+                                                                    {
+                                                                        <strong style="font-size:20px">@item.Gia VNĐ</strong>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <strong style="font-size:20px">@item.Giakhuyenmai VNĐ</strong>
+                                                                        <strike>@item.Gia VNĐ</strike>
+                                                                    }
+                                                                </a>
+
+
+                                                            </div>
+                                                        </li>
+
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <div class="item">
+                                                <ul class="thumbnails">
+                                                    @foreach (var item in Model.OrderByDescending(p => p.Masp).Skip(8).Take(8))
+                                                    {
+                                                        <li class="span3">
+                                                            <div class="product-box">
+                                                                <span class="sale_tag"></span>
+                                                                <p>
+                                                                    <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp">
+                                                                        <img src="@item.Anhdaidien" alt="">
+                                                                    </a>
+                                                                </p>
+                                                                <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>
+                                                                <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="category">
+                                                                    @if (item.Giakhuyenmai == null)
+                                                                    {
+                                                                        <strong style="font-size:20px">@item.Gia VNĐ</strong>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <strong style="font-size:20px">@item.Giakhuyenmai VNĐ</strong>
+                                                                        <strike>@item.Gia VNĐ</strike>
+                                                                    }
+                                                                </a>
+
+
+                                                            </div>
+                                                        </li>
+
+                                                    }
+                                                </ul>
+                                            </div>
+
+                                            <!-- -->
+             
+                                            <!-- -->
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

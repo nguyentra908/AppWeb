@@ -1,54 +1,61 @@
-﻿
+﻿@model WebApplication1.Models.Sanpham
 @{
     ViewData["Title"] = "giohang";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <div class="row">
-        <div class="span9">
-            <h4 class="title"><span class="text"><strong>Giỏ Hàng</strong> Của Bạn </span></h4>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Xóa</th>
-                        <th>Mặt hàng</th>
-                        <th> Tên Sản Phẩm </th>
-                        <th> Giá trên 1 sản phẩm </th>
-                        <th> Số Lượng </th>
-                        <th> Giá Tiền </th>
-                        <!-- <th> Tổng </th> -->
-                    </tr>
-                </thead>
-                <tbody id="body">
-                    <form method="POST" action="">
-                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+
+<div class="row">
+    <div class="span9">
+        <h4 class="title"><span class="text"><strong>Giỏ Hàng</strong> Của Bạn </span></h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Xóa</th>
+                    <th>Mặt hàng</th>
+                    <th> Tên Sản Phẩm </th>
+                    <th> Giá trên 1 sản phẩm </th>
+                    <th> Số Lượng </th>
+                    <th> Giá Tiền </th>
+                    <!-- <th> Tổng </th> -->
+                </tr>
+            </thead>
+            <tbody id="body">
+                <form method="POST" action="">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    @*@if (Session::has('cart'))
+                        @foreach ($sp_in_cart as $sp)*@
+                <tr>
+                    <td><a href="{{route('xoagiohang',$sp['item']['MASP'])}}"><input type="button" value="Xóa"></a></td>
+                    <td><a href="product_detail.html"><img alt="" src="@Model.Anhdaidien"></a></td>
+                    @if (Model.Giakhuyenmai == 0)
+                    {
+                        <td>@Model.Tensp</td>
+                        <td class="gia">@Model.Gia</td>
+                    }
+
+                    else
+                    {
+                        <td>@Model.Tensp</td>
+                        <td class="km">@Model.Giakhuyenmai</td>
+                    }
+
+                    <td class="capnhat">
+                        <input size="3" class="sl" type="text" value="{{$sp['qty']}}" class="input-mini">
+                        <input type="button" name="cập nhật" class="BCapnhat" id="@Model.Masp" value="Cập nhật">
+                    </td>
+                    <td class="dongia">{{number_format($sp['price'])}}đ</td>
+                </tr>
 
                         <tr>
-                            <td><a href="{{route('xoagiohang',$sp['item']['MASP'])}}"><input type="button" value="Xóa"></a></td>
-                            <td><a href="product_detail.html"><img alt="" src="source/images/Iphone/{{$sp['item']['ANHDAIDIEN']}}"></a></td>
-
-                            <td>{{$sp['item']['TENSP']}}</td>
-                            <td class="gia">{{$sp['item']['GIA']}}</td>
-
-                            <td>{{$sp['item']['TENSP']}}</td>
-                            <td class="km">{{$sp['item']['GIAKHUYENMAI']}}</td>
-
-                            <td class="capnhat">
-                                <input size="3" class="sl" type="text" value="{{$sp['qty']}}" class="input-mini">
-                                <input type="button" name="cập nhật" class="BCapnhat" id="{{$sp['item']['MASP']}}" value="Cập nhật">
-                            </td>
-                            <td class="dongia">{{number_format($sp['price'])}}đ</td>
                         </tr>
-
-                        <tr>
-                        </tr>
-
+                      
                     </form>
 
                 </tbody>
-
-                <strong><font size="5"><p id="total">Tổng cộng:  đ</p></font></strong>
-
+                @*@if (Session::has('cart'))
+                    <strong><font size="5"><p id="total">Tổng cộng: {{number_format($totalprice)}} đ</p></font></strong>
+                @endif*@
             </table>
 
             <h4> Bạn muốn làm gì tiếp theo? </h4>
@@ -68,7 +75,7 @@
             <p class="buttons center">
                 <button class="btn" type="button"> Cập Nhật </button>
                 <button class="btn" type="button"> Tiếp Tục </button>
-                <a href=""><button class="btn btn-inverse" type="submit" id="checkout">Thanh Toán</button></a>
+                <a href="{{route('trangdathang')}}"><button class="btn btn-inverse" type="submit" id="checkout">Thanh Toán</button></a>
             </p>
         </div>
         <div class="span3 col">
@@ -122,3 +129,4 @@
             </div>
         </div>
     </div>
+
