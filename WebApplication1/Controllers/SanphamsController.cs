@@ -18,6 +18,9 @@ namespace DOAN.Controllers
             _context = context;
         }
 
+        //
+      
+
         // GET: Sanphams
         public async Task<IActionResult> Index()
         {
@@ -56,10 +59,12 @@ namespace DOAN.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Masp,Tensp,Hang,Mota,Namsx,Gia,Giakhuyenmai,Anhdaidien,Manhinh,Cameratruoc,Camerasau,Ram,Bonhotrong,Cpu,Gpu,Pin,Os,Sim")] Sanpham sanpham)
+        public async Task<IActionResult> Create([Bind("Masp,Tensp,Hang,Mota,Namsx,Gia,Anhdaidien,Manhinh,Cameratruoc,Camerasau,Ram,Bonhotrong,Cpu,Gpu,Pin,Os,Sim")] Sanpham sanpham)
         {
             if (ModelState.IsValid)
             {
+               sanpham.Giakhuyenmai = sanpham.Gia;//default value of discount price
+                sanpham.Giakhuyenmai = 1;//default value of discount
                 _context.Add(sanpham);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -67,7 +72,7 @@ namespace DOAN.Controllers
             ViewData["Hang"] = new SelectList(_context.Hang, "Mahang", "Tenhang", sanpham.Hang);
             return View(sanpham);
         }
-
+      
         // GET: Sanphams/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace WebApplication1.Models
 {
@@ -17,8 +18,8 @@ namespace WebApplication1.Models
         public int Hang { get; set; }
         public string Mota { get; set; }
         public DateTime? Namsx { get; set; }
-        public int? Gia { get; set; }
-        public int? Giakhuyenmai { get; set; }
+        public double? Gia { get; set; }
+        public double? Giakhuyenmai { get; set; }
         public string Anhdaidien { get; set; }
         public string Manhinh { get; set; }
         public string Cameratruoc { get; set; }
@@ -28,6 +29,9 @@ namespace WebApplication1.Models
         public string Cpu { get; set; }
         public string Gpu { get; set; }
         public string Pin { get; set; }
+
+
+
         public string Os { get; set; }
         public string Sim { get; set; }
 
@@ -35,5 +39,9 @@ namespace WebApplication1.Models
         public virtual ICollection<Anh> Anh { get; set; }
         public virtual ICollection<Chitiethoadon> Chitiethoadon { get; set; }
         public virtual ICollection<Magiamgia> Magiamgia { get; set; }
+       
+
+
+
     }
 }

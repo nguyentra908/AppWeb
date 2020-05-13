@@ -1,4 +1,5 @@
 ﻿using System;
+using DOAN.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -22,6 +23,7 @@ namespace WebApplication1.Models
         public virtual DbSet<Khachhang> Khachhang { get; set; }
         public virtual DbSet<Magiamgia> Magiamgia { get; set; }
         public virtual DbSet<Sanpham> Sanpham { get; set; }
+
         public virtual DbSet<Taikhoan> Taikhoan { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 

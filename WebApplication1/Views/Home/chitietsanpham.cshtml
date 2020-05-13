@@ -8,7 +8,7 @@
     <div class="span9">
         <div class="row" style="background:#f5f0f0">
             <div class="span4">
-                <h3><span> @Html.DisplayFor(model => model.Tensp)</span></h3>
+                <h3><span>Điện thoại @Html.DisplayFor(model => model.Tensp)</span></h3>
                 <a asp-action="ChiTietSanPham">
                     <img src=" @Html.DisplayFor(model => model.Anhdaidien)" alt="">
                 </a>
@@ -16,14 +16,15 @@
             </div>
             <div class="span5" style="margin-top:100px">
                 <h3>
-                    @if (Model.Giakhuyenmai == null)
+                    @if (Model.Giakhuyenmai != 1)
                     {
-                        <strong>Giá:</strong> <span>@Model.Gia VNĐ</span><br>
+                        <strong>Giá khuyến mãi:</strong> <span>@String.Format("{0:N0}", Model.Gia * Model.Giakhuyenmai) VNĐ</span><br>
+                        <strong>Giá:</strong> <strike>@String.Format("{0:N0}", Model.Gia) VNĐ</strike>
                     }
                     else
                     {
-                        <strong>Giá khuyến mãi:</strong> <span>@Model.Giakhuyenmai VNĐ</span><br>
-                        <strong>Giá:</strong> <strike>@Model.Gia VNĐ</strike>
+                        <strong>Giá :</strong> <span>@String.Format("{0:N0}", Model.Gia) VNĐ</span><br>
+
                     }
                 </h3>
                 <address>
@@ -36,7 +37,7 @@
             </div>
             <div class="span5">
                 <div class="span5">
-                    <button class="btn btn-inverse" type="button"><a  asp-action="GioHang" asp-route-id="@Model.Masp">MUA NGAY</a></button>
+                    <button class="btn btn-inverse" type="button"><a  asp-action="Buy" asp-route-id="@Model.Masp">MUA NGAY</a></button>
                 </div>
 
             </div>

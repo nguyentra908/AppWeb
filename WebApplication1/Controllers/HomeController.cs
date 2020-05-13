@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using DOAN.Models;
+using DOAN.Models.Helpers;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +15,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
+   
     public class HomeController : Controller
     {
         //  WEBContext db = new WEBContext();
@@ -24,6 +28,7 @@ namespace WebApplication1.Controllers
         }
 
         private readonly ILogger<HomeController> _logger;
+
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -41,39 +46,95 @@ namespace WebApplication1.Controllers
 
 
             List<Sanpham> hangs = Context.Sanpham.ToList();
-          
+
             return PartialView(hangs);
 
         }
-        public IActionResult DangNhap()
-        {
-
-            return View();
-        }
+      
         public IActionResult TaiKhoan()
         {
 
             return View();
         }
-
-        public async Task<IActionResult> GioHang(int? id)
+      
+        public IActionResult GioHang()
         {
-            if (id == null)
+            var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+            ViewBag.cart = cart;
+            if (cart != null)
             {
-                return NotFound();
+           
+                ViewBag.total = cart.Sum(item => item.sanpham.Gia * item.Quantity * item.sanpham.Giakhuyenmai);
             }
-
-            var sanpham = await Context.Sanpham
-                .Include(h => h.HangNavigation)
-                .FirstOrDefaultAsync(m => m.Masp == id);
-            if (sanpham == null)
+            else
             {
-                return NotFound();
+                ViewBag.total = 0;
             }
+           
 
-            return PartialView(sanpham);
+
+
+            return View();
+        }
+        public async Task<IActionResult> Buy(int? id)
+        {
+
+            if (SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart") == null)
+            {
+                List<Item> cart = new List<Item>();
+                cart.Add(new Item { sanpham = Context.Sanpham.Single(p => p.Masp.Equals(id)), Quantity = 1 });
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            }
+            else
+            {
+                List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+                int index = isExist(id);
+                if (index != -1)
+                {
+                    cart[index].Quantity++;
+                }
+                else
+                {
+                    cart.Add(new Item { sanpham = Context.Sanpham.Single(p => p.Masp.Equals(id)), Quantity = 1 });
+                }
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            }
+            return RedirectToAction("GioHang");
+        }
+        [Route("remove/{id}")]
+        public IActionResult Remove(int? id)
+        {
+            List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+            int index = isExist(id);
+            cart.RemoveAt(index);
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            return RedirectToAction("GioHang");
+
         }
 
+        public IActionResult OnPostUpdate(int[] quantities)
+        {
+            List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+            for (var i = 0; i < cart.Count; i++)
+            {
+                cart[i].Quantity = quantities[i];
+            }
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            return RedirectToAction("GioHang");
+        }
+        private int isExist(int? id)
+        {
+            List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+            for (int i = 0; i < cart.Count; i++)
+            {
+                if (cart[i].sanpham.Masp.Equals(id))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        //Chi tiết sản phẩm
         public async Task<IActionResult> ChiTietSanPham(int? id)
         {
 
@@ -81,7 +142,7 @@ namespace WebApplication1.Controllers
             {
                 return NotFound();
             }
-           
+
             var sanpham = await Context.Sanpham
                 .Include(h => h.HangNavigation)
                 .FirstOrDefaultAsync(m => m.Masp == id);
@@ -93,7 +154,7 @@ namespace WebApplication1.Controllers
             return PartialView(sanpham);
         }
 
-        // Loai San Pham
+        // Paah loại sản phẩm
         public async Task<IActionResult> LoaiSP(int? id)
         {
 
@@ -101,11 +162,43 @@ namespace WebApplication1.Controllers
             return PartialView(hangs);
         }
 
+        //Thanh toan
+
+        public IActionResult ThanhToan()
+        {
+
+            return View();
+        }
+
+        //Dang ký
+        // GET: Home/DangKy
+        public IActionResult DangKy()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DangKy([Bind("Id,FullName,Role,Diachi,Sdt,Email,Password,RememberToken,CreatedAt,UpdatedAt")] Users users)
+        {
+            if (ModelState.IsValid)
+            {
+                Context.Add(users);
+                await Context.SaveChangesAsync();
+                return RedirectToAction(nameof(DangKy));
+            }
+            return View(users);
+        }
+           
+       
+       
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+      
     }
 }

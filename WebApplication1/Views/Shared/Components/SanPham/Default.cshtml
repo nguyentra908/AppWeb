@@ -19,14 +19,16 @@
                 </p>
                 <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>
                 <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="category">
-                    @if (item.Giakhuyenmai == null)
+                    @if (item.Giakhuyenmai != 1)
                     {
-                        <strong style="font-size:20px">@item.Gia VNĐ</strong>
+                        <strong style="font-size:20px">@String.Format("{0:N0}", item.Gia * item.Giakhuyenmai) VNĐ</strong>
+                        <strike>@String.Format("{0:N0}", item.Gia) VNĐ</strike>
                     }
                     else
                     {
-                        <strong style="font-size:20px">@item.Giakhuyenmai VNĐ</strong>
-                        <strike>@item.Gia VNĐ</strike>
+
+                        <strong style="font-size:20px"> @String.Format("{0:N0}", item.Gia) VNĐ</strong>
+
                     }
                 </a>
 

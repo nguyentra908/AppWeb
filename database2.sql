@@ -246,7 +246,7 @@ INSERT INTO taikhoan ([TENTK], [PASS], [QUYEN]) VALUES
 --
 
 CREATE TABLE users (
-  [ID] int CHECK ([ID] > 0) NOT NULL,
+  [ID] int CHECK ([ID] > 0) NOT NULL  IDENTITY(1,1),
   [FULL_NAME] varchar(30) DEFAULT NULL,
   [ROLE] varchar(30) NOT NULL DEFAULT 'khach',
   [DIACHI] varchar(100) DEFAULT NULL,
@@ -263,8 +263,8 @@ CREATE TABLE users (
 --
 
 INSERT INTO users ([ID], [FULL_NAME], [ROLE], [DIACHI], [SDT], [email], [password], [remember_token], [created_at], [updated_at]) VALUES
-(1, 'nguyễn', 'khach', 'khu b', '0377842878', 'kimthao581999@gmail.com', '$2y$10$TBXBMvPwjQJrfdYsjzoez./Ihk90G5rodeN6qaTGb1Hz3l8JOp.Ji', NULL, '2019-12-07 23:39:19', '2019-12-07 23:39:19'),
-(12, 'Quỳnh', 'khach', '3', '1140000000', 'nguyen@gmail.com', '$2y$10$uDQ1E3eQIcRGCDuRz2cW..bZpdi1.7PTS8iHiU4M4fBK3eoZK5lfy', NULL, '2019-12-20 20:54:53', '2019-12-20 20:54:53');
+(1, 'Truong', 'khach', 'khu b', '0377842878', 'Linhtinh@gmail.com', '$2y$10$TBXBMvPwjQJrfdYsjzoez./Ihk90G5rodeN6qaTGb1Hz3l8JOp.Ji', NULL, '2019-12-07 23:39:19', '2019-12-07 23:39:19'),
+(12, 'Tuong', 'khach', '3', '1140000000', 'nguyen@gmail.com', '$2y$10$uDQ1E3eQIcRGCDuRz2cW..bZpdi1.7PTS8iHiU4M4fBK3eoZK5lfy', NULL, '2019-12-20 20:54:53', '2019-12-20 20:54:53');
 
 --
 -- Chỉ mục cho các bảng đã đổ

@@ -1,5 +1,5 @@
 ﻿
-
+@using Microsoft.AspNetCore.Http
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,12 +33,21 @@
     <![endif]-->
 </head>
 <body>
+    @{
+
+        var userId = Context.Session.GetString("userId");
+        if (userId == null)
+        {
+
+
+        }
+    }
     <div id="top-bar" class="container">
         <div class="row">
             <div class="span4">
                 <form method="POST" class="search_form">
                     <div class="input-group">
-                        <input type="text" class="search-query form-control input-group" Placeholder="My laptop.">
+                        <input type="text" class="search-query form-control input-group" Placeholder="...">
                         <span class="input-group-btn">
                             <button class="btn btn-primary rounded-circle btnpro" type="button" id="btn-search">
                                 <span class="fa fa-search"></span>
@@ -51,9 +60,33 @@
             <div class="span8">
                 <div class="account pull-right">
                     <ul class="user-menu">
-                        <li><a href="https://localhost:44380/HOME/TaiKhoan">Tài khoản</a></li>
-                        <li><a href="https://localhost:44380/HOME/GioHang">Giỏ hàng</a></li>
-                        <li><a href="https://localhost:44380/Users/create">Đăng nhập</a></li>
+                        <li><a asp-controller="Home" asp-action="TaiKhoan">Tài khoản</a></li>
+                        <li><a asp-controller="Home" asp-action="GioHang">Giỏ hàng</a></li>
+                        @if (@userId != null)
+                        {
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    <strong>@userId</strong>
+                                    <span class="glyphicon glyphicon-chevron-down"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @*<li><a asp-area="" asp-controller="Userdetails" asp-action="index"><span class="glyphicon glyphicon-log-in"></span> My Profile</a></li>*@
+                                    <li><a asp-area="" asp-controller="Account" asp-action="Logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+                                </ul>
+                            </li>
+                            @*<li><a asp-area="" asp-controller="Account" asp-action="index"><span class="glyphicon glyphicon-user"></span> @userId</a></li>*@
+                        }
+                        else
+                        {
+                            <li><a asp-area="" asp-controller="Account" asp-action="index"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                            <li><a asp-area="" asp-controller="Account" asp-action="Registration"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
+
+                        }
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                      
+
                     </ul>
                 </div>
             </div>
@@ -62,7 +95,7 @@
     <div id="wrapper" class="container">
         <section class="navbar main-menu">
             <div class="navbar-inner main-menu">
-                <a href="https://localhost:44380 " class="logo pull-left"><h4 class="title">Di ĐỘNG THÔNG MINH </h4></a>
+                <a asp-controller="Home" asp-action="TrangChu" class="logo pull-left"><h4 class="title">Di ĐỘNG THÔNG MINH </h4></a>
                 <nav id="menu" class="pull-right">
                     <ul>
                         @await Component.InvokeAsync("Menu");

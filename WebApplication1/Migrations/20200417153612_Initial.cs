@@ -64,7 +64,7 @@ namespace DOAN.Migrations
                     SDT = table.Column<string>(unicode: false, fixedLength: true, maxLength: 10, nullable: true),
                     email = table.Column<string>(unicode: false, maxLength: 255, nullable: true),
                     password = table.Column<string>(unicode: false, maxLength: 255, nullable: false),
-                    remember_token = table.Column<string>(unicode: false, maxLength: 100, nullable: true),
+                    ReturnUrl = table.Column<string>(unicode: false, maxLength: 100, nullable: true),
                     created_at = table.Column<DateTime>(type: "datetime2(0)", nullable: false, defaultValueSql: "(getdate())"),
                     updated_at = table.Column<DateTime>(type: "datetime2(0)", nullable: false, defaultValueSql: "(getdate())")
                 },
