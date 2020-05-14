@@ -20,7 +20,7 @@ namespace DOAN.Controllers
         {
             this.Context = _context;
         }
-        public IActionResult Index()
+        public IActionResult Login()
         {
             return View();
         }
@@ -37,7 +37,10 @@ namespace DOAN.Controllers
                     ModelState.AddModelError("Password", "Invalid login attempt.");
                     return View("Index");
                 }
-                HttpContext.Session.SetString("userId", userdetails.Email);
+                HttpContext.Session.SetString("Email", userdetails.Email);
+                HttpContext.Session.SetString("ten", userdetails.FullName);
+                HttpContext.Session.SetString("diachi", userdetails.Diachi);
+                HttpContext.Session.SetString("sdt", userdetails.Sdt);
 
             }
             else
@@ -69,7 +72,7 @@ namespace DOAN.Controllers
             {
                 return View("Registration");
             }
-            return RedirectToAction("Index", "Account");
+            return RedirectToAction("Login", "Account");
         }
         // registration Page load
         public IActionResult Registration()
@@ -83,7 +86,7 @@ namespace DOAN.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
-            return View("Index");
+            return View("Login");
         }
 
         public void ValidationMessage(string key, string alert, string value)
@@ -100,7 +103,59 @@ namespace DOAN.Controllers
             }
 
         }
-        // registration Page load
-      
+        // update infomation user
+        // GET: Users/Edit/5
+        public async Task<IActionResult> TaiKhoan()
+        {
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //var users = await Context.Users.FindAsync(id);
+            //if (users == null)
+            //{
+            //    return NotFound();
+            //}
+            return View();
+        }
+
+       
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,Diachi,Sdt,Email")] Users users)
+        {
+            if (id != users.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Context.Update(users);
+                    await Context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!UsersExists(users.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(users);
+        }
+        private bool UsersExists(int id)
+        {
+            return Context.Users.Any(e => e.Id == id);
+        }
+
     }
 }

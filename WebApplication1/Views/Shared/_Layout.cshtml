@@ -35,8 +35,8 @@
 <body>
     @{
 
-        var userId = Context.Session.GetString("userId");
-        if (userId == null)
+        var Email = Context.Session.GetString("Email");
+        if (Email == null)
         {
 
 
@@ -62,12 +62,12 @@
                     <ul class="user-menu">
                         <li><a asp-controller="Home" asp-action="TaiKhoan">Tài khoản</a></li>
                         <li><a asp-controller="Home" asp-action="GioHang">Giỏ hàng</a></li>
-                        @if (@userId != null)
+                        @if (@Email != null)
                         {
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <span class="glyphicon glyphicon-user"></span>
-                                    <strong>@userId</strong>
+                                    <strong>@Email</strong>
                                     <span class="glyphicon glyphicon-chevron-down"></span>
                                 </a>
                                 <ul class="dropdown-menu">
@@ -75,12 +75,12 @@
                                     <li><a asp-area="" asp-controller="Account" asp-action="Logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
                                 </ul>
                             </li>
-                            @*<li><a asp-area="" asp-controller="Account" asp-action="index"><span class="glyphicon glyphicon-user"></span> @userId</a></li>*@
+                          
                         }
                         else
                         {
-                            <li><a asp-area="" asp-controller="Account" asp-action="index"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                            <li><a asp-area="" asp-controller="Account" asp-action="Registration"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Registration"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
 
                         }
                     </ul>
