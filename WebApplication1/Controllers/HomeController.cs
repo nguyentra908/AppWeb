@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using DOAN.Models;
 using DOAN.Models.Helpers;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity.UI.V3.Pages.Account.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -59,15 +61,13 @@ namespace WebApplication1.Controllers
             ViewBag.cart = cart;
             if (cart != null)
             {
-           
                 ViewBag.total = cart.Sum(item => item.sanpham.Gia * item.Quantity * item.sanpham.Giakhuyenmai);
             }
             else
             {
                 ViewBag.total = 0;
-            }
-           
 
+            }
 
 
             return View();
@@ -207,8 +207,14 @@ namespace WebApplication1.Controllers
                     ModelState.AddModelError("Password", "Invalid login attempt.");
                     return View("Index");
                 }
+                HttpContext.Session.SetInt32("Id", userdetails.Id);
+                HttpContext.Session.SetString("Password", userdetails.Password);
                 HttpContext.Session.SetString("Email", userdetails.Email);
+
                 HttpContext.Session.SetString("ten", userdetails.FullName);
+                 
+
+
                 HttpContext.Session.SetString("diachi", userdetails.Diachi);
                 HttpContext.Session.SetString("sdt", userdetails.Sdt);
 
@@ -242,7 +248,7 @@ namespace WebApplication1.Controllers
             {
                 return View("Registration");
             }
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("TrangChu", "Home");
         }
         // registration Page load
         public IActionResult Registration()
@@ -256,7 +262,7 @@ namespace WebApplication1.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
-            return View("TrangChu");
+            return View("Login");
         }
 
         public void ValidationMessage(string key, string alert, string value)
@@ -275,21 +281,114 @@ namespace WebApplication1.Controllers
         }
         // update infomation user
         // GET: Users/Edit/5
-        public async Task<IActionResult> TaiKhoan()
+        //public async Task<IActionResult> TaiKhoan()
+        //{
+           
+        //    return View("TaiKhoan");
+        //}
+        public async Task<IActionResult> TaiKhoan(int? id)
         {
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-            //var users = await Context.Users.FindAsync(id);
-            //if (users == null)
-            //{
-            //    return NotFound();
-            //}
-            return View();
+            var users = await Context.Users.FindAsync(id);
+            if (users == null)
+            {
+                return NotFound();
+            }
+            return View(users);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> TaiKhoan(int id, [Bind("Id,FullName,Diachi,Sdt,Email,Password")] Users users)
+        {
+            if (id != users.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                     users.Role = "Khach";
+                    Context.Update(users);
+                    await Context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!UsersExists(users.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(TrangChu));
+            }
+            return View("TaiKhoan");
+        }
+
+        private bool UsersExists(int id)
+        {
+            return Context.Users.Any(e => e.Id == id);
+        }
+        //xác nhận đơn hàng, thanh toán
+
+        // GET: Hoadons/Create
+        public IActionResult HoaDon()
+        {
+            ViewData["Idkh"] = new SelectList(Context.Khachhang, "Id", "Id");
+            return View("TrangChu");
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> HoaDon(int id, [Bind("Mahd,Ngayhd,Tongtien,Idkh,Ghichu,Tinhtrang")] Hoadon hoadon,
+            [Bind("Mahd,Masp,Thanhtien,Soluong,Gia")] Chitiethoadon chitiethoadon)
+        {
+            if (ModelState.IsValid)
+            {
+                hoadon.Ghichu = null;
+                hoadon.Ngayhd = DateTime.Today;
+                hoadon.Idkh = id;              
+                var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+                ViewBag.cart = cart;
+                if (cart != null)
+                {
+                    hoadon.Tongtien = Convert.ToInt32(cart.Sum(item => item.sanpham.Gia * item.Quantity * item.sanpham.Giakhuyenmai));
+                }        
+                hoadon.Tinhtrang = "chua";
+
+                Context.Add(hoadon);
+                await Context.SaveChangesAsync();
+                return RedirectToAction(nameof(TrangChu));
+            }
+            ViewData["Idkh"] = new SelectList(Context.Users, "Id", "Id", hoadon.Idkh);
+            //chi tiết hóa đơn
+            if (ModelState.IsValid)
+            {
+                chitiethoadon.Mahd = hoadon.Mahd;
+                chitiethoadon.Masp = 1;
+                chitiethoadon.Thanhtien = null;
+                chitiethoadon.Soluong = 1;
+                chitiethoadon.Gia = 1;
+                Context.Add(chitiethoadon);
+                await Context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["Masp"] = new SelectList(Context.Sanpham, "Masp", "Tensp", chitiethoadon.Masp);
+         
+            //
+
+          
+            return View(hoadon);
+        }
+      
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

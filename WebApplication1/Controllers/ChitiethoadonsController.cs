@@ -9,23 +9,23 @@ using WebApplication1.Models;
 
 namespace DOAN.Controllers
 {
-    public class HoadonsController : Controller
+    public class ChitiethoadonsController : Controller
     {
         private readonly WEBContext _context;
 
-        public HoadonsController(WEBContext context)
+        public ChitiethoadonsController(WEBContext context)
         {
             _context = context;
         }
 
-        // GET: Hoadons
+        // GET: Chitiethoadons
         public async Task<IActionResult> Index()
         {
-            var wEBContext = _context.Hoadon.Include(h => h.IdkhNavigation);
+            var wEBContext = _context.Chitiethoadon.Include(c => c.MaspNavigation);
             return View(await wEBContext.ToListAsync());
         }
 
-        // GET: Hoadons/Details/5
+        // GET: Chitiethoadons/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,42 +33,39 @@ namespace DOAN.Controllers
                 return NotFound();
             }
 
-            var hoadon = await _context.Hoadon
-                .Include(h => h.IdkhNavigation)
+            var chitiethoadon = await _context.Chitiethoadon
+                .Include(c => c.MaspNavigation)
                 .FirstOrDefaultAsync(m => m.Mahd == id);
-            if (hoadon == null)
+            if (chitiethoadon == null)
             {
                 return NotFound();
             }
 
-            return View(hoadon);
+            return View(chitiethoadon);
         }
 
-        // GET: Hoadons/Create
+        // GET: Chitiethoadons/Create
         public IActionResult Create()
         {
-            ViewData["Idkh"] = new SelectList(_context.Khachhang, "Id", "Id");
+            ViewData["Masp"] = new SelectList(_context.Sanpham, "Masp", "Tensp");
             return View();
         }
 
-        // POST: Hoadons/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Mahd,Ngayhd,Tongtien,Idkh,Ghichu,CreatedAt,UpdatedAt,Tinhtrang")] Hoadon hoadon)
+        public async Task<IActionResult> Create([Bind("Mahd,Masp,Thanhtien,Soluong,Gia,CreatedAt,UpdatedAt")] Chitiethoadon chitiethoadon)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(hoadon);
+                _context.Add(chitiethoadon);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Idkh"] = new SelectList(_context.Khachhang, "Id", "Id", hoadon.Idkh);
-            return View(hoadon);
+            ViewData["Masp"] = new SelectList(_context.Sanpham, "Masp", "Tensp", chitiethoadon.Masp);
+            return View(chitiethoadon);
         }
 
-        // GET: Hoadons/Edit/5
+        // GET: Chitiethoadons/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -76,23 +73,23 @@ namespace DOAN.Controllers
                 return NotFound();
             }
 
-            var hoadon = await _context.Hoadon.FindAsync(id);
-            if (hoadon == null)
+            var chitiethoadon = await _context.Chitiethoadon.FindAsync(id);
+            if (chitiethoadon == null)
             {
                 return NotFound();
             }
-            ViewData["Idkh"] = new SelectList(_context.Khachhang, "Id", "Id", hoadon.Idkh);
-            return View(hoadon);
+            ViewData["Masp"] = new SelectList(_context.Sanpham, "Masp", "Tensp", chitiethoadon.Masp);
+            return View(chitiethoadon);
         }
 
-        // POST: Hoadons/Edit/5
+        // POST: Chitiethoadons/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Mahd,Ngayhd,Tongtien,Idkh,Ghichu,CreatedAt,UpdatedAt,Tinhtrang")] Hoadon hoadon)
+        public async Task<IActionResult> Edit(int id, [Bind("Mahd,Masp,Thanhtien,Soluong,Gia,CreatedAt,UpdatedAt")] Chitiethoadon chitiethoadon)
         {
-            if (id != hoadon.Mahd)
+            if (id != chitiethoadon.Mahd)
             {
                 return NotFound();
             }
@@ -101,12 +98,12 @@ namespace DOAN.Controllers
             {
                 try
                 {
-                    _context.Update(hoadon);
+                    _context.Update(chitiethoadon);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HoadonExists(hoadon.Mahd))
+                    if (!ChitiethoadonExists(chitiethoadon.Mahd))
                     {
                         return NotFound();
                     }
@@ -117,11 +114,11 @@ namespace DOAN.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Idkh"] = new SelectList(_context.Khachhang, "Id", "Id", hoadon.Idkh);
-            return View(hoadon);
+            ViewData["Masp"] = new SelectList(_context.Sanpham, "Masp", "Tensp", chitiethoadon.Masp);
+            return View(chitiethoadon);
         }
 
-        // GET: Hoadons/Delete/5
+        // GET: Chitiethoadons/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -129,31 +126,31 @@ namespace DOAN.Controllers
                 return NotFound();
             }
 
-            var hoadon = await _context.Hoadon
-                .Include(h => h.IdkhNavigation)
+            var chitiethoadon = await _context.Chitiethoadon
+                .Include(c => c.MaspNavigation)
                 .FirstOrDefaultAsync(m => m.Mahd == id);
-            if (hoadon == null)
+            if (chitiethoadon == null)
             {
                 return NotFound();
             }
 
-            return View(hoadon);
+            return View(chitiethoadon);
         }
 
-        // POST: Hoadons/Delete/5
+        // POST: Chitiethoadons/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var hoadon = await _context.Hoadon.FindAsync(id);
-            _context.Hoadon.Remove(hoadon);
+            var chitiethoadon = await _context.Chitiethoadon.FindAsync(id);
+            _context.Chitiethoadon.Remove(chitiethoadon);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool HoadonExists(int id)
+        private bool ChitiethoadonExists(int id)
         {
-            return _context.Hoadon.Any(e => e.Mahd == id);
+            return _context.Chitiethoadon.Any(e => e.Mahd == id);
         }
     }
 }

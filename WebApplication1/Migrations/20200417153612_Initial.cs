@@ -126,9 +126,9 @@ namespace DOAN.Migrations
                 {
                     table.PrimaryKey("PK__hoadon__603F20CEC9E5564B", x => x.MAHD);
                     table.ForeignKey(
-                        name: "FK_HD_KH",
+                        name: "FK_HD_Users",
                         column: x => x.IDKH,
-                        principalTable: "khachhang",
+                        principalTable: "Users",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });

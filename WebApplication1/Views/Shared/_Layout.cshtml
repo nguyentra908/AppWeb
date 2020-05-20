@@ -34,7 +34,7 @@
 </head>
 <body>
     @{
-
+         var Id = Context.Session.GetInt32("Id");
         var Email = Context.Session.GetString("Email");
         if (Email == null)
         {
@@ -60,7 +60,7 @@
             <div class="span8">
                 <div class="account pull-right">
                     <ul class="user-menu">
-                        <li><a asp-controller="Home" asp-action="TaiKhoan">Tài khoản</a></li>
+                        <li><a asp-controller="Home" asp-action="TaiKhoan" asp-route-id="@Id">Tài khoản</a></li>
                         <li><a asp-controller="Home" asp-action="GioHang">Giỏ hàng</a></li>
                         @if (@Email != null)
                         {
@@ -72,15 +72,15 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     @*<li><a asp-area="" asp-controller="Userdetails" asp-action="index"><span class="glyphicon glyphicon-log-in"></span> My Profile</a></li>*@
-                                    <li><a asp-area="" asp-controller="Account" asp-action="Logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+                                    <li><a asp-area="" asp-controller="Home" asp-action="Logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
                                 </ul>
                             </li>
                           
                         }
                         else
                         {
-                            <li><a asp-area="" asp-controller="Home" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="Registration"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Registration"><span class="glyphicon glyphicon-log-in"></span> Đăng Ký</a></li>
 
                         }
                     </ul>

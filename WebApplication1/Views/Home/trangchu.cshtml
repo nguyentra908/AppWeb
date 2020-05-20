@@ -119,7 +119,7 @@
                                 <div class="carousel-inner">
                                     <div class="active item">
                                         <ul class="thumbnails">
-                                            @foreach (var item in Model.OrderByDescending(p => p.Gia).Take(4))
+                                            @foreach (var item in Model.OrderByDescending(p => p.Gia).Where(p => p.Gia >= 7000000).Take(4))
                                             {
                                                 <li class="span3">
                                                     <div class="product-box">
@@ -154,7 +154,7 @@
                                     </div>
                                     <div class="item">
                                         <ul class="thumbnails">
-                                            @foreach (var item in Model.OrderByDescending(p => p.Gia).Skip(4).Take(4))
+                                            @foreach (var item in Model.OrderByDescending(p => p.Gia).Where(p => p.Gia >= 7000000).Skip(4).Take(4))
                                             {
                                                 <li class="span3">
                                                     <div class="product-box">
@@ -186,7 +186,40 @@
                                             }
                                         </ul>
                                     </div>
+                                    <div class="item">
+                                        <ul class="thumbnails">
+                                            @foreach (var item in Model.OrderByDescending(p => p.Gia).Where(p => p.Gia >= 7000000).Skip(4).Take(4))
+                                            {
+                                                <li class="span3">
+                                                    <div class="product-box">
+                                                        <span class="sale_tag"></span>
+                                                        <p>
+                                                            <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp">
+                                                                <img src="@item.Anhdaidien" alt="">
+                                                            </a>
+                                                        </p>
+                                                        <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>
+                                                        <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="category">
+                                                            @if (item.Giakhuyenmai != 1)
+                                                            {
+                                                                <strong style="font-size:20px">@String.Format("{0:N0}", item.Gia * item.Giakhuyenmai) VNĐ</strong>
+                                                                <strike>@String.Format("{0:N0}", item.Gia) VNĐ</strike>
+                                                            }
+                                                            else
+                                                            {
 
+                                                                <strong style="font-size:20px"> @String.Format("{0:N0}", item.Gia) VNĐ</strong>
+
+                                                            }
+                                                        </a>
+
+
+                                                    </div>
+                                                </li>
+
+                                            }
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -211,7 +244,7 @@
                                         <div class="carousel-inner">
                                             <div class="active item">
                                                 <ul class="thumbnails">
-                                                    @foreach (var item in Model.OrderByDescending(p => p.Masp).Take(8))
+                                                    @foreach (var item in Model.OrderByDescending(p => p.Masp).Where(p => p.Gia<7000000).Take(8))
                                                     {
                                                         <li class="span3">
                                                             <div class="product-box">
@@ -245,7 +278,7 @@
                                             </div>
                                             <div class="item">
                                                 <ul class="thumbnails">
-                                                    @foreach (var item in Model.OrderByDescending(p => p.Masp).Skip(8).Take(8))
+                                                    @foreach (var item in Model.OrderByDescending(p => p.Masp).Where(p => p.Gia < 7000000).Skip(8).Take(8))
                                                     {
                                                         <li class="span3">
                                                             <div class="product-box">

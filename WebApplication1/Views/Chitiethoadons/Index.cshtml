@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication1.Models.Hoadon>
+﻿@model IEnumerable<WebApplication1.Models.Chitiethoadon>
 
 @{
     ViewData["Title"] = "Index";
@@ -14,13 +14,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Ngayhd)
+                @Html.DisplayNameFor(model => model.Thanhtien)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tongtien)
+                @Html.DisplayNameFor(model => model.Soluong)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ghichu)
+                @Html.DisplayNameFor(model => model.Gia)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CreatedAt)
@@ -29,10 +29,7 @@
                 @Html.DisplayNameFor(model => model.UpdatedAt)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tinhtrang)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdkhNavigation)
+                @Html.DisplayNameFor(model => model.MaspNavigation)
             </th>
             <th></th>
         </tr>
@@ -41,13 +38,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Ngayhd)
+                @Html.DisplayFor(modelItem => item.Thanhtien)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Tongtien)
+                @Html.DisplayFor(modelItem => item.Soluong)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Ghichu)
+                @Html.DisplayFor(modelItem => item.Gia)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreatedAt)
@@ -56,15 +53,12 @@
                 @Html.DisplayFor(modelItem => item.UpdatedAt)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Tinhtrang)
+                @Html.DisplayFor(modelItem => item.MaspNavigation.Tensp)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdkhNavigation.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Mahd">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Mahd">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Mahd">Delete</a>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
 }

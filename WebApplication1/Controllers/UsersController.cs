@@ -96,6 +96,8 @@ namespace DOAN.Controllers
             {
                 try
                 {
+                    users.Role = "Khach";//default value of discount
+                    
                     _context.Update(users);
                     await _context.SaveChangesAsync();
                 }

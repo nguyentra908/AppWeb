@@ -1,4 +1,4 @@
-﻿@model WebApplication1.Models.Hoadon
+﻿@model WebApplication1.Models.Chitiethoadon
 
 @{
     ViewData["Title"] = "Details";
@@ -8,26 +8,26 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Hoadon</h4>
+    <h4>Chitiethoadon</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ngayhd)
+            @Html.DisplayNameFor(model => model.Thanhtien)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ngayhd)
+            @Html.DisplayFor(model => model.Thanhtien)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Tongtien)
+            @Html.DisplayNameFor(model => model.Soluong)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tongtien)
+            @Html.DisplayFor(model => model.Soluong)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ghichu)
+            @Html.DisplayNameFor(model => model.Gia)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ghichu)
+            @Html.DisplayFor(model => model.Gia)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CreatedAt)
@@ -42,20 +42,14 @@
             @Html.DisplayFor(model => model.UpdatedAt)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Tinhtrang)
+            @Html.DisplayNameFor(model => model.MaspNavigation)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tinhtrang)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdkhNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdkhNavigation.Id)
+            @Html.DisplayFor(model => model.MaspNavigation.Tensp)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Mahd">Edit</a> |
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Index">Back to List</a>
 </div>
