@@ -2,65 +2,61 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutAD.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Chi tiết đơn hàng</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<a >PDF</a>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Thanhtien)
+                @Html.DisplayNameFor(model => model.MahdNavigation.Mahd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaspNavigation.Tensp)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Soluong)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Gia)
+                @Html.DisplayNameFor(model => model.Thanhtien)
             </th>
+
+
             <th>
                 @Html.DisplayNameFor(model => model.CreatedAt)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MaspNavigation)
-            </th>
+
+
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Thanhtien)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Soluong)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaspNavigation.Tensp)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MahdNavigation.Mahd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaspNavigation.Tensp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Soluong)
+                </td>
+                <td>
+                    @String.Format("{0:N0}", item.Thanhtien)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+
+
+
+            </tr>
+        }
     </tbody>
 </table>

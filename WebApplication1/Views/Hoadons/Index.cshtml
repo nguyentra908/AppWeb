@@ -2,37 +2,46 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutAD.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Danh sách đơn hàng</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Tạo Hóa Đơn</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Ngayhd)
+                @Html.DisplayNameFor(model => model.Mahd)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdkhNavigation.Ten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdkhNavigation.Diachi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdkhNavigation.Sdt)
+            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Tongtien)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ghichu)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.CreatedAt)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdatedAt)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Tinhtrang)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdkhNavigation)
+                Chi tiết đơn hàng
+            </th>
+            <th>
+                Xuất đơn hàng
             </th>
             <th></th>
         </tr>
@@ -40,32 +49,45 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+
             <td>
-                @Html.DisplayFor(modelItem => item.Ngayhd)
+                @Html.DisplayFor(modelItem => item.Mahd)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Tongtien)
+                @Html.DisplayFor(modelItem => item.IdkhNavigation.Ten)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Ghichu)
+                @Html.DisplayFor(modelItem => item.IdkhNavigation.Diachi)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdkhNavigation.Sdt)
+            </td>
+
+            <td>
+
+                @String.Format("{0:N0}", item.Tongtien)
+            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.CreatedAt)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedAt)
-            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.Tinhtrang)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdkhNavigation.Id)
+                <a asp-controller="Chitiethoadons" asp-action="Index" asp-route-id="@item.Mahd">Chit tiết</a>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Mahd">PDF</a>
+
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Mahd">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Mahd">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Mahd">Delete</a>
             </td>
+
         </tr>
 }
     </tbody>

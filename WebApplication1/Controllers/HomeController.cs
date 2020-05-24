@@ -94,7 +94,10 @@ namespace WebApplication1.Controllers
                     cart.Add(new Item { sanpham = Context.Sanpham.Single(p => p.Masp.Equals(id)), Quantity = 1 });
                 }
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+         
+
             }
+           
             return RedirectToAction("GioHang");
         }
         [Route("remove/{id}")]
@@ -217,7 +220,7 @@ namespace WebApplication1.Controllers
 
                 HttpContext.Session.SetString("diachi", userdetails.Diachi);
                 HttpContext.Session.SetString("sdt", userdetails.Sdt);
-
+               
             }
             else
             {
@@ -341,22 +344,32 @@ namespace WebApplication1.Controllers
         //xác nhận đơn hàng, thanh toán
 
         // GET: Hoadons/Create
+        //private IActionResult View(Hoadon hoadon, Chitiethoadon chitiethoadon)
+        //{
+        //    ViewData["Idkh"] = new SelectList(Context.Khachhang, "Id", "Id");
+        //    ViewData["Masp"] = new SelectList(Context.Sanpham, "Masp", "Masp", chitiethoadon.Masp);
+        //    return View("TrangChu");
+        //}
+
         public IActionResult HoaDon()
         {
             ViewData["Idkh"] = new SelectList(Context.Khachhang, "Id", "Id");
+            ViewData["Mahd"] = new SelectList(Context.Hoadon, "Mahd", "Mahd");
+            ViewData["Masp"] = new SelectList(Context.Sanpham, "Masp", "Tensp");
             return View("TrangChu");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> HoaDon(int id, [Bind("Mahd,Ngayhd,Tongtien,Idkh,Ghichu,Tinhtrang")] Hoadon hoadon,
-            [Bind("Mahd,Masp,Thanhtien,Soluong,Gia")] Chitiethoadon chitiethoadon)
+        public async Task<IActionResult> HoaDon(int id)
         {
             if (ModelState.IsValid)
             {
+                //hóa đơn   
+                Hoadon hoadon = new Hoadon();               
                 hoadon.Ghichu = null;
-                hoadon.Ngayhd = DateTime.Today;
-                hoadon.Idkh = id;              
-                var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+                hoadon.Ngayhd = DateTime.Now;
+                hoadon.Idkh = id;
+                List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
                 ViewBag.cart = cart;
                 if (cart != null)
                 {
@@ -365,31 +378,43 @@ namespace WebApplication1.Controllers
                 hoadon.Tinhtrang = "chua";
 
                 Context.Add(hoadon);
+
+                await Context.SaveChangesAsync();
+
+                //chi tiết hóa đơn
+                foreach (var item in ViewBag.cart)
+                {
+                    Chitiethoadon cthd = new Chitiethoadon();
+
+
+                    cthd.Mahd = hoadon.Mahd;
+                    cthd.Masp = item.sanpham.Masp;
+                    cthd.Soluong = item.Quantity;
+                    cthd.Thanhtien = item.sanpham.Gia * item.sanpham.Giakhuyenmai * item.Quantity;
+                    cthd.Gia = item.sanpham.Gia * item.Quantity;
+                    Context.Add(cthd);
+                  //  ViewData["Mahd"] = new SelectList(Context.Hoadon, "Mahd", "Mahd", cthd.Mahd);
+                   // ViewData["Masp"] = new SelectList(Context.Sanpham, "Masp", "Tensp", cthd.Masp);
+
+                }
+
+              
+
+
+
                 await Context.SaveChangesAsync();
                 return RedirectToAction(nameof(TrangChu));
+              
             }
-            ViewData["Idkh"] = new SelectList(Context.Users, "Id", "Id", hoadon.Idkh);
-            //chi tiết hóa đơn
-            if (ModelState.IsValid)
-            {
-                chitiethoadon.Mahd = hoadon.Mahd;
-                chitiethoadon.Masp = 1;
-                chitiethoadon.Thanhtien = null;
-                chitiethoadon.Soluong = 1;
-                chitiethoadon.Gia = 1;
-                Context.Add(chitiethoadon);
-                await Context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["Masp"] = new SelectList(Context.Sanpham, "Masp", "Tensp", chitiethoadon.Masp);
+           
          
             //
 
           
-            return View(hoadon);
+            return View();
         }
-      
 
+     
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

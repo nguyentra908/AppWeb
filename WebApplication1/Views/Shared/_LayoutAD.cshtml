@@ -87,15 +87,15 @@
                     <li><a href="https://localhost:44357/ADMIN/trangchuAD"><i class="fa fa-tachometer"></i> <span>Trang chủ</span><div class="clearfix"></div></a></li>
 
 
-                    <li id="menu-academico"><a href="https://localhost:44380/ADMIN/donhangAD"><i class="fa fa-envelope nav_icon"></i><span>Đơn hàng</span><div class="clearfix"></div></a></li>
+                    <li id="menu-academico"><a asp-controller="Hoadons" asp-action="Index"><i class="fa fa-envelope nav_icon"></i><span>Đơn hàng</span><div class="clearfix"></div></a></li>
 
 
                     <li id="menu-academico">
                         <a href="#"><i class="fa fa-list-ul" aria-hidden="true"></i><span>Sản phẩm</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
                         <ul id="menu-academico-sub">
-                            <li id="menu-academico-avaliacoes"><a href="https://localhost:44380/sanphams/Index">Quản lý sản phẩm</a></li>
+                            <li id="menu-academico-avaliacoes"><a asp-controller="Sanphams" asp-action="Index">Quản lý sản phẩm</a></li>
 
-                            <li id="menu-academico-avaliacoes"><a href="https://localhost:44380/Hangs/Index">Nhà sản xuất</a></li>
+                            <li id="menu-academico-avaliacoes"><a asp-controller="Hangs" asp-action="Index">Nhà sản xuất</a></li>
                         </ul>
                     </li>
 

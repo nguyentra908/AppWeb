@@ -19,9 +19,9 @@ namespace DOAN.Controllers
         }
 
         // GET: Chitiethoadons
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            var wEBContext = _context.Chitiethoadon.Include(c => c.MaspNavigation);
+            var wEBContext = _context.Chitiethoadon.Include(c => c.MahdNavigation).Include(c => c.MaspNavigation).Where(p=>p.Mahd==id);
             return View(await wEBContext.ToListAsync());
         }
 
@@ -34,6 +34,7 @@ namespace DOAN.Controllers
             }
 
             var chitiethoadon = await _context.Chitiethoadon
+                .Include(c => c.MahdNavigation)
                 .Include(c => c.MaspNavigation)
                 .FirstOrDefaultAsync(m => m.Mahd == id);
             if (chitiethoadon == null)
@@ -47,10 +48,14 @@ namespace DOAN.Controllers
         // GET: Chitiethoadons/Create
         public IActionResult Create()
         {
+            ViewData["Mahd"] = new SelectList(_context.Hoadon, "Mahd", "Mahd");
             ViewData["Masp"] = new SelectList(_context.Sanpham, "Masp", "Tensp");
             return View();
         }
 
+        // POST: Chitiethoadons/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Mahd,Masp,Thanhtien,Soluong,Gia,CreatedAt,UpdatedAt")] Chitiethoadon chitiethoadon)
@@ -61,11 +66,12 @@ namespace DOAN.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Mahd"] = new SelectList(_context.Hoadon, "Mahd", "Mahd", chitiethoadon.Mahd);
             ViewData["Masp"] = new SelectList(_context.Sanpham, "Masp", "Tensp", chitiethoadon.Masp);
             return View(chitiethoadon);
         }
 
-        // GET: Chitiethoadons/Edit/5
+     //   GET: Chitiethoadons/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -78,12 +84,13 @@ namespace DOAN.Controllers
             {
                 return NotFound();
             }
+            ViewData["Mahd"] = new SelectList(_context.Hoadon, "Mahd", "Tinhtrang", chitiethoadon.Mahd);
             ViewData["Masp"] = new SelectList(_context.Sanpham, "Masp", "Tensp", chitiethoadon.Masp);
             return View(chitiethoadon);
         }
 
-        // POST: Chitiethoadons/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        //POST: Chitiethoadons/Edit/5
+         //To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -114,6 +121,7 @@ namespace DOAN.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Mahd"] = new SelectList(_context.Hoadon, "Mahd", "Tinhtrang", chitiethoadon.Mahd);
             ViewData["Masp"] = new SelectList(_context.Sanpham, "Masp", "Tensp", chitiethoadon.Masp);
             return View(chitiethoadon);
         }
@@ -127,6 +135,7 @@ namespace DOAN.Controllers
             }
 
             var chitiethoadon = await _context.Chitiethoadon
+                .Include(c => c.MahdNavigation)
                 .Include(c => c.MaspNavigation)
                 .FirstOrDefaultAsync(m => m.Mahd == id);
             if (chitiethoadon == null)

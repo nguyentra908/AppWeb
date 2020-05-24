@@ -10,7 +10,7 @@
     var sdt = Context.Session.GetString("sdt");
     var ten = Context.Session.GetString("ten");
     var diachi = Context.Session.GetString("diachi");
-
+    
 }
 
 <h4><span>Thanh Toán</span></h4>
@@ -19,8 +19,8 @@
     <div class="row">
         <div class="span12">
             <div class="accordion" id="accordion2">
-                <form  asp-action="HoaDon" asp-controller="Home" asp-route-id="@Idkh">
-                    <input type="hidden" name="_token" value="">
+                <form  asp-controller="Home" asp-action="HoaDon" asp-route-id="@Idkh">
+              
                     <div class="accordion-group">
                         <div class="accordion-heading">
                             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">Tài khoản &amp; Chi tiết hóa đơn</a>
@@ -30,13 +30,14 @@
                                 <div class="row-fluid">
                                     <div class="span6">
                                         <h4>Thông tin cá nhân</h4>
-                                       
+
                                         <div class="control-group">
                                             <label class="control-label">Họ và tên</label>
                                             <div class="controls">
                                                 <input type="text" placeholder="" class="input-xlarge" name="ten" value="@ten">
                                             </div>
                                         </div>
+                                      
 
                                         <div class="control-group">
                                             <label class="control-label">Địa chỉ Email</label>
@@ -79,7 +80,7 @@
                                         </div>
                                     </div>
                                     <input type="submit" name="" class="btn btn-primary pull-right" value="Xác nhận đơn hàng">
-                                 
+
                                 </div>
                             </div>
                         </div>

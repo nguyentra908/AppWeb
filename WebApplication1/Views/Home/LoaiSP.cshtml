@@ -90,10 +90,10 @@
                                                     <div class="product-box">
                                                         <span class="sale_tag"></span>
                                                         <p>
-                                                            <a href="https://localhost:44380/Home/ChiTietSanPham"><img src="@item.Anhdaidien" alt=""></a>
+                                                            <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp"><img src="@item.Anhdaidien" alt=""></a>
                                                         </p>
-                                                        <a href="https://localhost:44380/Home/ChiTietSanPham" class="title">@item.Tensp</a><br>
-                                                        <a href="https://localhost:44380/Home/ChiTietSanPham" class="category">
+                                                        <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>
+                                                        <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="category">
                                                             @if (item.Giakhuyenmai != 1)
                                                             {
                                                                 <strong style="font-size:20px">@String.Format("{0:N0}", item.Gia * item.Giakhuyenmai) VNĐ</strong>
