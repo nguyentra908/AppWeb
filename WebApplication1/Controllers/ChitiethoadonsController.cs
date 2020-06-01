@@ -1,11 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
+using Syncfusion.Pdf;
+using Syncfusion.HtmlConverter;
+
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace DOAN.Controllers
 {
@@ -17,6 +21,58 @@ namespace DOAN.Controllers
         {
             _context = context;
         }
+        
+        //public IActionResult PDF(int? id)
+        //{
+        //    //Initialize HTML converter 
+
+        //    HtmlToPdfConverter htmlConverter = new HtmlToPdfConverter();
+
+        //    // WebKit converter settings
+
+        //    WebKitConverterSettings webKitSettings = new WebKitConverterSettings();
+
+        //    //Assign the WebKit binaries path
+
+        //    webKitSettings.WebKitPath = @"\QtBinariesDotNetCore\";
+
+        //    // Enable bookmarks
+
+        //    webKitSettings.EnableBookmarks = true;
+
+        //    //Assign the WebKit settings
+
+        //    htmlConverter.ConverterSettings = webKitSettings;
+
+        //    //Convert HTML to PDF
+
+        //    PdfDocument document = htmlConverter.Convert("input.html");
+
+        //    //Save the document into stream.
+
+        //    MemoryStream stream = new MemoryStream();
+
+        //    document.Save(stream);
+
+        //    stream.Position = 0;
+
+        //    //Close the document.
+
+        //    document.Close(true);
+
+        //    //Defining the ContentType for pdf file.
+
+        //    string contentType = "application/pdf";
+
+        //    //Define the file name.
+
+        //    string fileName = " Output.pdf";
+
+        //    //Creates a FileContentResult object by using the file contents, content type, and file name.
+
+        //    return File(stream, contentType, fileName);
+        //}
+
 
         // GET: Chitiethoadons
         public async Task<IActionResult> Index(int? id)

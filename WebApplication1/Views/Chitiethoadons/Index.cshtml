@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_LayoutAD.cshtml";
 }
 
-<h1>Chi tiết đơn hàng</h1>
 
-<a >PDF</a>
+<div style="text-align: center"><h2 style="background: #c6d9f1">CHI TIẾT ĐƠN HÀNG</h2></div>
+
 <table class="table">
     <thead>
         <tr>
@@ -16,6 +16,12 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.MaspNavigation.Tensp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaspNavigation.Anhdaidien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gia)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Soluong)
@@ -36,27 +42,34 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MahdNavigation.Mahd)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MaspNavigation.Tensp)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Soluong)
-                </td>
-                <td>
-                    @String.Format("{0:N0}", item.Thanhtien)
-                </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MahdNavigation.Mahd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaspNavigation.Tensp)
+            </td>
+            <td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedAt)
-                </td>
+                <img style="width: 100px;height: 120px;" src="@item.MaspNavigation.Anhdaidien" alt="">
+            </td>
+            <td>
+                @String.Format("{0:N0}", item.Gia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soluong)
+            </td>
+            <td>
+                @String.Format("{0:N0}", item.Thanhtien)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
 
 
 
-            </tr>
+        </tr>
         }
     </tbody>
 </table>

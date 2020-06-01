@@ -391,7 +391,7 @@ namespace WebApplication1.Controllers
                     cthd.Masp = item.sanpham.Masp;
                     cthd.Soluong = item.Quantity;
                     cthd.Thanhtien = item.sanpham.Gia * item.sanpham.Giakhuyenmai * item.Quantity;
-                    cthd.Gia = item.sanpham.Gia * item.Quantity;
+                    cthd.Gia = item.sanpham.Gia * item.sanpham.Giakhuyenmai;
                     Context.Add(cthd);
                   //  ViewData["Mahd"] = new SelectList(Context.Hoadon, "Mahd", "Mahd", cthd.Mahd);
                    // ViewData["Masp"] = new SelectList(Context.Sanpham, "Masp", "Tensp", cthd.Masp);

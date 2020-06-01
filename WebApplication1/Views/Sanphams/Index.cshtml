@@ -60,13 +60,15 @@
                 </td>
 
                 <td>
-                    @Html.DisplayFor(modelItem => item.Gia)
+                  
+                    @String.Format("{0:N0}", item.Gia)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Giakhuyenmai)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Anhdaidien)
+                    <img style="width: 100px;height: 120px;" src="@item.Anhdaidien" alt="">
+                  
                 </td>
 
                 <td>

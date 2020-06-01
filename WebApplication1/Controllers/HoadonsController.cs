@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
 
+
 namespace DOAN.Controllers
 {
     public class HoadonsController : Controller
@@ -17,6 +18,8 @@ namespace DOAN.Controllers
         {
             _context = context;
         }
+        //In đơn hàng
+      
 
         // GET: Hoadons
         public async Task<IActionResult> Index()
