@@ -5,10 +5,7 @@ namespace WebApplication1.Models
 {
     public partial class Khachhang
     {
-        public Khachhang()
-        {
-            Hoadon = new HashSet<Hoadon>();
-        }
+     
 
         public int Id { get; set; }
         public string Ten { get; set; }
@@ -19,6 +16,6 @@ namespace WebApplication1.Models
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
-        public virtual ICollection<Hoadon> Hoadon { get; set; }
+    
     }
 }

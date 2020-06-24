@@ -1,54 +1,35 @@
-﻿ using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Syncfusion.Pdf;
-using Syncfusion.HtmlConverter;
+using Rotativa.AspNetCore;
+using WebApplication1.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
 
-using System.IO;
-using Microsoft.AspNetCore.Hosting;
 namespace DOAN.Controllers
 {
+    [Route("ExportToPDF")]
     public class ExportToPDFController : Controller
     {
-        private readonly IHostingEnvironment _hostingEnvironment;
-        public ExportToPDFController(IHostingEnvironment hostingEnvironment)
+        private readonly WEBContext _context;
+
+        public ExportToPDFController(WEBContext context)
         {
-            _hostingEnvironment = hostingEnvironment;
+            _context = context;
+        }
+      
+        public IActionResult ExportToPDF(int? id)
+        {        
+            var get = _context.Chitiethoadon
+                .Include(c => c.MahdNavigation)
+                .Include(c => c.MaspNavigation)
+                  .Include(c => c.MahdNavigation.IdkhNavigation)
+                .Where(p => p.Mahd == id).ToList();
+            ViewBag.total = _context.Chitiethoadon.Sum(item => item.Thanhtien);
+            return new ViewAsPdf(get);
+
         }
 
 
 
-        public IActionResult ExportToPDF()
-        {
-            //Initialize HTML to PDF converter 
-            HtmlToPdfConverter htmlConverter = new HtmlToPdfConverter();
-            WebKitConverterSettings settings = new WebKitConverterSettings();
-            //Set WebKit path
-            settings.WebKitPath = Path.Combine(_hostingEnvironment.ContentRootPath, "QtBinariesWindows");
-            //Assign WebKit settings to HTML converter
-            htmlConverter.ConverterSettings = settings;
-            //Convert URL to PDF
-            PdfDocument document = htmlConverter.Convert("https://help.syncfusion.com/file-formats/pdf/convert-html-to-pdf/blink");
-            MemoryStream stream = new MemoryStream();
-            document.Save(stream);
-            document.Close(true);
-
-            stream.Position = 0;        
-
-            //Download the PDF document in the browser
-            FileStreamResult fileStreamResult = new FileStreamResult(stream, "application/pdf");
-
- 
-
-            return fileStreamResult;
-
-        }
-        public IActionResult Index()
-        {
-            return View();
-        }
     }
 }

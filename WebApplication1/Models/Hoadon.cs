@@ -14,6 +14,6 @@ namespace WebApplication1.Models
         public DateTime UpdatedAt { get; set; }
         public string Tinhtrang { get; set; }
 
-        public virtual Khachhang IdkhNavigation { get; set; }
+        public virtual Users IdkhNavigation { get; set; }
     }
 }

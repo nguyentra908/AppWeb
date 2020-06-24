@@ -3,7 +3,18 @@
     ViewData["Title"] = "trangchu";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+    <head>
 
+        <style type="text/css">
+            .product-box:hover {
+                background-color: white !important;
+                box-shadow: 0px 0px 5px #1f1e1e !important;
+            }
+                .product-box:hover a {
+                    color: #f60 !important;
+                }
+        </style>
+    </head>
 <body>
 
     <div id="wrapper" class="container">
@@ -32,11 +43,11 @@
                                             @foreach (var item in Model.OrderBy(p => p.Masp).Take(4))
                                             {
                                                 <li class="span3">
-                                                    <div class="product-box">
+                                                    <div style="background-color: white;" class="product-box">
                                                         <span class="sale_tag"></span>
                                                         <p>
                                                             <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp">
-                                                                <img src="@item.Anhdaidien" alt="">
+                                                                <img style="width: 200px; height: auto;padding-top: 20px;" src="@item.Anhdaidien" alt="">
                                                             </a>
                                                         </p>
                                                         <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>
@@ -65,11 +76,11 @@
                                             @foreach (var item in Model.OrderBy(p => p.Masp).Skip(4).Take(4))
                                             {
                                                 <li class="span3">
-                                                    <div class="product-box">
+                                                    <div style="background-color: white;"class="product-box">
                                                         <span class="sale_tag"></span>
                                                         <p>
                                                             <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp">
-                                                                <img src="@item.Anhdaidien" alt="">
+                                                                <img style="width: 200px; height: auto;padding-top: 20px;" src="@item.Anhdaidien" alt="">
                                                             </a>
                                                         </p>
                                                         <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>
@@ -122,11 +133,11 @@
                                             @foreach (var item in Model.OrderByDescending(p => p.Gia).Where(p => p.Gia >= 7000000).Take(4))
                                             {
                                                 <li class="span3">
-                                                    <div class="product-box">
+                                                    <div style="background-color: white;" class="product-box">
                                                         <span class="sale_tag"></span>
                                                         <p>
                                                             <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp">
-                                                                <img src="@item.Anhdaidien" alt="">
+                                                                <img style="width: 200px; height: auto;padding-top: 20px;"src="@item.Anhdaidien" alt="">
                                                             </a>
                                                         </p>
                                                         <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>
@@ -157,11 +168,11 @@
                                             @foreach (var item in Model.OrderByDescending(p => p.Gia).Where(p => p.Gia >= 7000000).Skip(4).Take(4))
                                             {
                                                 <li class="span3">
-                                                    <div class="product-box">
+                                                    <div style="background-color: white;" class="product-box">
                                                         <span class="sale_tag"></span>
                                                         <p>
                                                             <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp">
-                                                                <img src="@item.Anhdaidien" alt="">
+                                                                <img style="width: 200px; height: auto;padding-top: 20px;" src="@item.Anhdaidien" alt="">
                                                             </a>
                                                         </p>
                                                         <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>
@@ -191,11 +202,11 @@
                                             @foreach (var item in Model.OrderByDescending(p => p.Gia).Where(p => p.Gia >= 7000000).Skip(4).Take(4))
                                             {
                                                 <li class="span3">
-                                                    <div class="product-box">
+                                                    <div style="background-color: white;" class="product-box">
                                                         <span class="sale_tag"></span>
                                                         <p>
                                                             <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp">
-                                                                <img src="@item.Anhdaidien" alt="">
+                                                                <img style="width: 200px; height: auto;padding-top: 20px;" src="@item.Anhdaidien" alt="">
                                                             </a>
                                                         </p>
                                                         <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>
@@ -247,11 +258,11 @@
                                                     @foreach (var item in Model.OrderByDescending(p => p.Masp).Where(p => p.Gia<7000000).Take(8))
                                                     {
                                                         <li class="span3">
-                                                            <div class="product-box">
+                                                            <div style="background-color: white;" class="product-box">
                                                                 <span class="sale_tag"></span>
                                                                 <p>
                                                                     <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp">
-                                                                        <img src="@item.Anhdaidien" alt="">
+                                                                        <img style="width: 200px; height: auto;padding-top: 20px;" src="@item.Anhdaidien" alt="">
                                                                     </a>
                                                                 </p>
                                                                 <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>
@@ -281,11 +292,11 @@
                                                     @foreach (var item in Model.OrderByDescending(p => p.Masp).Where(p => p.Gia < 7000000).Skip(8).Take(8))
                                                     {
                                                         <li class="span3">
-                                                            <div class="product-box">
+                                                            <div style="background-color: white;" class="product-box">
                                                                 <span class="sale_tag"></span>
                                                                 <p>
                                                                     <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp">
-                                                                        <img src="@item.Anhdaidien" alt="">
+                                                                        <img style="width: 200px; height: auto;padding-top: 20px;" src="@item.Anhdaidien" alt="">
                                                                     </a>
                                                                 </p>
                                                                 <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>

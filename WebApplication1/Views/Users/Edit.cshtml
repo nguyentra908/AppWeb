@@ -2,12 +2,12 @@
 
 @{
     ViewData["Title"] = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutAD.cshtml";
 }
 
-<h1>Edit</h1>
 
-<h4>Users</h4>
+
+<h4>Cập nhật thông in khách hàng</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -44,21 +44,21 @@
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="RememberToken" class="control-label"></label>
                 <input asp-for="RememberToken" class="form-control" />
                 <span asp-validation-for="RememberToken" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="CreatedAt" class="control-label"></label>
                 <input asp-for="CreatedAt" class="form-control" />
                 <span asp-validation-for="CreatedAt" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="UpdatedAt" class="control-label"></label>
                 <input asp-for="UpdatedAt" class="form-control" />
                 <span asp-validation-for="UpdatedAt" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

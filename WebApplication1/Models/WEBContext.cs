@@ -1,4 +1,5 @@
 ﻿using System;
+using DEMO.Models;
 using DOAN.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -15,7 +16,8 @@ namespace WebApplication1.Models
             : base(options)
         {
         }
-
+        public virtual DbSet<Admin> Admin { get; set; }
+        public virtual DbSet<Nhanvien> Nhanvien { get; set; }
         public virtual DbSet<Anh> Anh { get; set; }
         public virtual DbSet<Chitiethoadon> Chitiethoadon { get; set; }
         public virtual DbSet<Hang> Hang { get; set; }
@@ -27,6 +29,9 @@ namespace WebApplication1.Models
         public virtual DbSet<Taikhoan> Taikhoan { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
+       
+        
+        //public virtual DbSet<ExportPDF> ExportPDF { get; set; }
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
         //   if (!optionsBuilder.IsConfigured)
@@ -38,6 +43,63 @@ namespace WebApplication1.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Admin>(entity =>
+            {
+                entity.ToTable("admin");
+
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnName("created_at")
+                    .HasColumnType("datetime2(0)")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.Email)
+                    .HasColumnName("EMAIL")
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Password)
+                    .HasColumnName("password")
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Ten)
+                    .HasColumnName("TEN")
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+            });
+            modelBuilder.Entity<Nhanvien>(entity =>
+            {
+                entity.ToTable("nhanvien");
+
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnName("created_at")
+                    .HasColumnType("datetime2(0)")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.Diachi)
+                    .HasColumnName("DIACHI")
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Email)
+                    .HasColumnName("EMAIL")
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Sdt)
+                    .HasColumnName("SDT")
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Ten)
+                    .HasColumnName("TEN")
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+            });
             modelBuilder.Entity<Anh>(entity =>
             {
                 entity.HasKey(e => new { e.Masp, e.Link })

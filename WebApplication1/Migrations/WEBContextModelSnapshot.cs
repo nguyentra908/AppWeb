@@ -18,7 +18,84 @@ namespace DOAN.Migrations
                 .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            modelBuilder.Entity("DEMO.Models.Admin", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("ID")
+                    .HasColumnType("int")
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                b.Property<DateTime>("CreatedAt")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("created_at")
+                    .HasColumnType("datetime2(0)")
+                    .HasDefaultValueSql("(getdate())");
+
+                b.Property<string>("Email")
+                    .HasColumnName("EMAIL")
+                    .HasColumnType("varchar(255)")
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                b.Property<string>("Password")
+                    .HasColumnName("password")
+                    .HasColumnType("varchar(255)")
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                b.Property<string>("Ten")
+                    .HasColumnName("TEN")
+                    .HasColumnType("varchar(30)")
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                b.HasKey("Id");
+
+                b.ToTable("admin");
+            });
+            modelBuilder.Entity("DEMO.Models.Nhanvien", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("ID")
+                    .HasColumnType("int")
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                b.Property<DateTime>("CreatedAt")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("created_at")
+                    .HasColumnType("datetime2(0)")
+                    .HasDefaultValueSql("(getdate())");
+
+                b.Property<string>("Diachi")
+                    .HasColumnName("DIACHI")
+                    .HasColumnType("varchar(255)")
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                b.Property<string>("Email")
+                    .HasColumnName("EMAIL")
+                    .HasColumnType("varchar(255)")
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                b.Property<string>("Sdt")
+                    .HasColumnName("SDT")
+                    .HasColumnType("varchar(10)")
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                b.Property<string>("Ten")
+                    .HasColumnName("TEN")
+                    .HasColumnType("varchar(30)")
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                b.HasKey("Id");
+
+                b.ToTable("nhanvien");
+            });
             modelBuilder.Entity("WebApplication1.Models.Anh", b =>
                 {
                     b.Property<int>("Masp")

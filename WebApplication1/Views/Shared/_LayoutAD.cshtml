@@ -84,22 +84,27 @@
             <div style="border-top:1px ridge rgba(255, 255, 255, 0.15)"></div>
             <div class="menu">
                 <ul id="menu">
-                    <li><a href="https://localhost:44357/ADMIN/trangchuAD"><i class="fa fa-tachometer"></i> <span>Trang chủ</span><div class="clearfix"></div></a></li>
+                    <li><a href="https://localhost:44380/Admin/trangchuAD"><i class="fa fa-tachometer"></i> <span>Trang chủ</span><div class="clearfix"></div></a></li>
 
 
                     <li id="menu-academico"><a asp-controller="Hoadons" asp-action="Index"><i class="fa fa-envelope nav_icon"></i><span>Đơn hàng</span><div class="clearfix"></div></a></li>
 
 
                     <li id="menu-academico">
-                        <a href="#"><i class="fa fa-list-ul" aria-hidden="true"></i><span>Sản phẩm</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
+                        <a href="#"><i class="fa fa-list-ul" aria-hidden="true"></i><span>Quản lý</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
                         <ul id="menu-academico-sub">
                             <li id="menu-academico-avaliacoes"><a asp-controller="Sanphams" asp-action="Index">Quản lý sản phẩm</a></li>
+                            <li id="menu-academico-avaliacoes"><a asp-controller="Hangs" asp-action="Index">Quản lý doanh mục</a></li>
+                            <li id="menu-academico-avaliacoes"><a asp-controller="Users" asp-action="Index">Quản lý khách hàng</a></li>
+                            <li id="menu-academico-avaliacoes"><a asp-controller="Nhanviens" asp-action="Index">Quản lý nhân viên</a></li>
+                          
 
-                            <li id="menu-academico-avaliacoes"><a asp-controller="Hangs" asp-action="Index">Nhà sản xuất</a></li>
                         </ul>
                     </li>
 
-                    <li id="menu-academico"><a href="https://localhost:44380/ADMIN/reportAD"><i class="fa fa-file-text-o"></i><span>Report</span><div class="clearfix"></div></a></li>
+
+
+                    <li id="menu-academico"><a asp-controller="ThongKe" asp-action="thongke"><i class="fa fa-file-text-o"></i><span>Thống kê đơn hàng</span><div class="clearfix"></div></a></li>
 
 
 

@@ -19,12 +19,13 @@ namespace DOAN.Controllers
             _context = context;
         }
         //In đơn hàng
-      
+
 
         // GET: Hoadons
         public async Task<IActionResult> Index()
         {
-            var wEBContext = _context.Hoadon.Include(h => h.IdkhNavigation);
+            var wEBContext = _context.Hoadon
+                .Include(h => h.IdkhNavigation);
             return View(await wEBContext.ToListAsync());
         }
 

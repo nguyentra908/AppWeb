@@ -432,7 +432,7 @@ section.navbar{
 	left:0;
 }
 .product-box:hover{
-	background-color:#0078D7;
+	background-color:white;
 	-webkit-transition: all 0.2s linear;
 	-moz-transition: all 0.2s linear;
 	-o-transition: all 0.2s linear;
@@ -441,7 +441,7 @@ section.navbar{
 	box-shadow: 0px 0px 5px #ccc;
 }
 .product-box:hover a{
-	color:#fff !important;
+	color:black !important;
 }
 .product-box img{
 	overflow:hidden;
@@ -757,10 +757,10 @@ section.our_client .row{
 		padding-bottom:10px;		
 	}
 	.product-box:hover{
-		background-color:#f8f8f8;
+		background-color:white;
 	}
 	.product-box:hover a{
-		color:#333 !important;
+		color:white !important;
 	}
 	#menu ul{display: none;}
 	.navbar-inner.main-menu a.logo{

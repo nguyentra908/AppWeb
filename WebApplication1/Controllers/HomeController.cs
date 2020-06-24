@@ -336,7 +336,72 @@ namespace WebApplication1.Controllers
             }
             return View("TaiKhoan");
         }
+        public async Task<IActionResult> ThayMatKhau(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            var users = await Context.Users.FindAsync(id);
+            if (users == null)
+            {
+                return NotFound();
+            }
+            return View(users);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ThayMatKhau(int id, [Bind("Password")] Users users)
+        {
+            if (id != users.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    users.Role = "Khach";
+                    Context.Update(users);
+                    await Context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!UsersExists(users.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(TrangChu));
+            }
+            return View("TaiKhoan");
+        }
+
+        // GET: Hoadons
+        public async Task<IActionResult> LichSuDonHang(int? id)
+        {
+            var get = Context.Chitiethoadon
+              .Include(c => c.MahdNavigation)
+              .Include(c => c.MaspNavigation)
+                .Include(c => c.MahdNavigation.IdkhNavigation)
+              .Where(p => p.MahdNavigation.Idkh == id).ToList();
+            ViewBag.total = Context.Chitiethoadon.Sum(item => item.Thanhtien);
+            return View (get);
+
+        }
+
+       
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+       
         private bool UsersExists(int id)
         {
             return Context.Users.Any(e => e.Id == id);

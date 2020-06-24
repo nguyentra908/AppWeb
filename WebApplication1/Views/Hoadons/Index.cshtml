@@ -14,28 +14,25 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Mahd)
+                #
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdkhNavigation.Ten)
+                Họ và tên
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdkhNavigation.Diachi)
+                Địa chỉ
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdkhNavigation.Sdt)
-            </th>
-
-            <th>
-                @Html.DisplayNameFor(model => model.Tongtien)
+                Số điện thoại
             </th>
 
             <th>
-                @Html.DisplayNameFor(model => model.CreatedAt)
+                Tổng tiền
             </th>
 
+
             <th>
-                @Html.DisplayNameFor(model => model.Tinhtrang)
+                Tình trạng
             </th>
             <th>
                 Chi tiết đơn hàng
@@ -49,47 +46,46 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+        <tr>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Mahd)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdkhNavigation.Ten)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdkhNavigation.Diachi)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdkhNavigation.Sdt)
-                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mahd)
+            </td>
+         
+            <td>
+                @Html.DisplayFor(modelItem => item.IdkhNavigation.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdkhNavigation.Diachi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdkhNavigation.Sdt)
+            </td>
 
-                <td>
+            <td>
 
-                    @String.Format("{0:N0}", item.Tongtien)
-                </td>
+                @String.Format("{0:N0}", item.Tongtien)
+            </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedAt)
-                </td>
+           
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tinhtrang)
-                </td>
-                <td>
-                    <a asp-controller="Chitiethoadons" asp-action="Index" asp-route-id="@item.Mahd">Chi tiết</a>
-                </td>
-                <td>
-                    <a  asp-controller="Chitiethoadons" asp-action="PDF" asp-route-id="@item.Mahd">PDF</a>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tinhtrang)
+            </td>
+            <td>
+                <a asp-controller="Chitiethoadons" asp-action="Index" asp-route-id="@item.Mahd">Chi tiết</a>
+            </td>
+            <td>
+                <a asp-controller="ExportToPDF" asp-action="ExportToPDF" asp-route-id="@item.Mahd">PDF</a>
 
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Mahd">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Mahd">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Mahd">Delete</a>
-                </td>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Mahd">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Mahd">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Mahd">Delete</a>
+            </td>
 
-            </tr>
+        </tr>
         }
     </tbody>
 </table>

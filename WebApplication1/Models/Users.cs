@@ -6,7 +6,10 @@ namespace WebApplication1.Models
 {
     public partial class Users
     {
-       
+        public Users()
+        {
+            Hoadon = new HashSet<Hoadon>();
+        }
         public int Id { get; set; }
         public string FullName { get; set; }
         public string Role { get; set; }
@@ -17,5 +20,6 @@ namespace WebApplication1.Models
         public string RememberToken { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public virtual ICollection<Hoadon> Hoadon { get; set; }
     }
 }
