@@ -21,23 +21,23 @@
 
         $(document).ready(function () {
 
-            $('#date').blur(function () {
-                var date = $('#date').val();
+            $('#khachhang').blur(function () {
+                var khachhang = $('#khachhang').val();
                 $.ajax({
-                    type: 'GET',                  
-                    url: '/thongke/demo/' + date,
+                    type: 'GET',
+                    url: '/ThongKeKhachHangMuaNhieu/demo/' + khachhang,
                     success: function (result) {
                         var s = '';
                         var stt = 0;
                         s += '<table>';
-                        s += '<tr><th>STT</th><th>Mã hóa đơn</th><th>Ngày tạo</th><th>Tổng tiền</th><th>Mã khách hàng</th></tr>';
+                        s += '<tr><th>STT</th><th>Mã khách hàng</th><th>Tên khách hàng</th><th>Tổng tiền</th></tr>';
                         for (var i = 0; i < result.length; i++) {
                             s += '<tr>';
                             s += '<td>' + stt++ + '</td>';
-                            s += '<td>' + result[i].mahd + '</td>';
-                            s += '<td>' + result[i].ngayhd + '</td>';
+                            s += '<td>' + result[i].ma + '</td>';
+                            s += '<td>' + result[i].ten + '</td>';
                             s += '<td>' + result[i].tongtien + '</td>';
-                            s += '<td>' + result[i].idkh + '</td>';
+                           
                             s +=  '</tr>';
                         }
                         s += '</table>';
@@ -60,10 +60,10 @@
 
 
 
-    @using (Html.BeginForm("print", "ThongKe", FormMethod.Post))
+    @using (Html.BeginForm("print", "ThongKeKhachHangMuaNhieu", FormMethod.Post))
     {
-        <span>Nhập ngày : </span>
-        <input style="width: 200px" type="text" name="date" id="date">
+        <span>Nhập số lượng khách hàng : </span>
+        <input style="width: 200px" type="text" name="khachhang" id="khachhang">
         <div style="text-align: right">  <input style="text-align: right" type="submit" value="PRINT" /></div>
     }
 

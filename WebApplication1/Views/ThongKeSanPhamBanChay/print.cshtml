@@ -1,5 +1,4 @@
-﻿
-@model IEnumerable<WebApplication1.Models.Hoadon>
+﻿@model IEnumerable<WebApplication1.Models.Chitiethoadon>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_PDF.cshtml";
@@ -76,7 +75,7 @@
                 }
 
         .media only screen and (max-width: 600px) {
-            .invoice-box table tr.top table td
+
 
         {
             width: 100%;
@@ -137,16 +136,16 @@
 
 
                 <td>
-                    Mã hóa đơn
+                    >Mã sản phẩm
                 </td>
                 <td>
-                    Ngày tạo
+                    Tên sản phẩm
+                </td>
+                <td>
+                    Số lượng bán
                 </td>
                 <td>
                     Tổng tiền
-                </td>
-                <td>
-                    Mã khách hàng
                 </td>
 
 
@@ -155,38 +154,59 @@
             <tr class="item">
 
             <tbody>
-                @foreach (var item in Model)
+
+                @if (ViewBag.get != null)
                 {
+                    @foreach (var item in ViewBag.get)
+                    {
+                        <tr>
 
-                    <tr>
+                            <td>
+                                @item.ma
+                            </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Mahd)
-                        </td>
+                            <td>
+                                @item.ten
+                            </td>
+                            <td>
+                                @item.sl
+                            </td>
+                            <td>
+                                @item.tongtien
+                            </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Ngayhd)
-                        </td>
-                        <td>                         
-                            @String.Format("{0:N0}", item.Tongtien)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Idkh)
-                        </td>
-
-                    </tr>
+                        </tr>
+                    }
                 }
             </tbody>
-            <tr class="">
-                <td></td>
-                <td> Total:</td>
-              
-                <td>
-                    @String.Format("{0:N0}", Model.Sum(i => i.Tongtien))Đ
-                </td>
-            </tr>
+
         </table>
         <div style="text-align: right; padding-top:50px;">Ngày.... Tháng.... Năm....</div>
     </div>
 </body>
 </html>
+
+
+@*@if (ViewBag.get != null)
+    {
+        @foreach (var item in ViewBag.get)
+        {
+            <tr>
+
+                <td>
+                    @item.ma
+                </td>
+
+                <td>
+                    @item.ten
+                </td>
+                <td>
+                    @item.sl
+                </td>
+                <td>
+                    @item.tongtien
+                </td>
+
+            </tr>
+        }
+    }*@

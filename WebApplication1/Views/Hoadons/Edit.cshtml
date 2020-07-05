@@ -2,60 +2,63 @@
 
 @{
     ViewData["Title"] = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutAD.cshtml";
 }
 
-<h1>Edit</h1>
-
-<h4>Hoadon</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<h2 style="color:#333333;">Cập nhật đơn hàng</h2>
+<div class="agile-tables">
+    <div class="w3l-table-info">
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Mahd" />
-            <div class="form-group">
-                <label asp-for="Ngayhd" class="control-label"></label>
-                <input asp-for="Ngayhd" class="form-control" />
-                <span asp-validation-for="Ngayhd" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Tongtien" class="control-label"></label>
-                <input asp-for="Tongtien" class="form-control" />
-                <span asp-validation-for="Tongtien" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Idkh" class="control-label"></label>
-                <select asp-for="Idkh" class="form-control" asp-items="ViewBag.Idkh"></select>
-                <span asp-validation-for="Idkh" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ghichu" class="control-label"></label>
-                <input asp-for="Ghichu" class="form-control" />
-                <span asp-validation-for="Ghichu" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreatedAt" class="control-label"></label>
-                <input asp-for="CreatedAt" class="form-control" />
-                <span asp-validation-for="CreatedAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UpdatedAt" class="control-label"></label>
-                <input asp-for="UpdatedAt" class="form-control" />
-                <span asp-validation-for="UpdatedAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Tinhtrang" class="control-label"></label>
-                <input asp-for="Tinhtrang" class="form-control" />
-                <span asp-validation-for="Tinhtrang" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div style="background: white;" class="col-md-12">
+                <div class="col-md-6">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Mahd" />
+                    <div class="form-group">
+                        <label>Ngày tạo</label>
+                        <input asp-for="Ngayhd" class="form-control" />
+                        <span asp-validation-for="Ngayhd" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Tổng tiền</label>
+                        <input asp-for="Tongtien" class="form-control" />
+                        <span asp-validation-for="Tongtien" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Mã khách hàng</label>
+                        <select asp-for="Idkh" class="form-control" asp-items="ViewBag.Idkh"></select>
+                        <span asp-validation-for="Idkh" class="text-danger"></span>
+                    </div>
+                  
+                </div>
+                <div class="col-md-6">
+                    @*<div class="form-group">
+                        <label>Họ và tên</label>
+                        <input asp-for="IdkhNavigation.FullName" class="form-control" />
+                        <span asp-validation-for="IdkhNavigation.FullName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Số điện thoại</label>
+                        <input asp-for="IdkhNavigation.Sdt" class="form-control" />
+                        <span asp-validation-for="IdkhNavigation.Sdt" class="text-danger"></span>
+                    </div>*@
+                    <div class="form-group">
+                        <label>Ghi chú</label>
+                        <input asp-for="Ghichu" class="form-control" />
+                        <span asp-validation-for="Ghichu" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Tình trạng</label>
+                        <input asp-for="Tinhtrang" class="form-control" />
+                        <span asp-validation-for="Tinhtrang" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </div>
             </div>
         </form>
     </div>
 </div>
-
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index"><i class="fa fa-arrow-left" aria-hidden="true"></i>Back to list</a>
 </div>

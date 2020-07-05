@@ -29,7 +29,7 @@
                             <h4 class="title">
 
                                 <span class="pull-left">
-                                    <span class="text"><span class="line"><a href="https://localhost:44380/Home/ChiTietSanPham"><strong>Các sản phẩm mới nhất</strong></a></span></span>
+                                    <span class="text"><span class="line"><a href="https://localhost:44380/Home/ChiTietSanPham"><strong>Các sản phẩm tìm kiếm...</strong></a></span></span>
                                 </span>
 
                                 <span class="pull-right">
@@ -40,10 +40,10 @@
                                 <div class="carousel-inner">
                                     <div class="active item">
                                         <ul class="thumbnails">
-                                            @foreach (var item in Model.OrderBy(p => p.Masp).Take(4))
+                                            @foreach (var item in Model)
                                             {
                                                 <li class="span3">
-                                                    <div style="background-color: white"  class="product-box">
+                                                    <div style="background-color: white" class="product-box">
                                                         <span class="sale_tag"></span>
                                                         <p>
                                                             <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp">
@@ -81,58 +81,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="row">
-                        <div class="span9">
-                            <h4 class="title">
-
-                                <span class="pull-left">
-                                    <span class="text"><span class="line"><a href="http://localhost/lar-53/public/product_detail.html"><strong>Các sản phẩm nổi bật nhất</strong></a></span></span>
-                                </span>
-
-                                <span class="pull-right">
-                                    <a class="left button" href="http://localhost/lar-53/public/index#myCarousel-3" data-slide="prev"></a><a class="right button" href="http://localhost/lar-53/public/index#myCarousel-3" data-slide="next"></a>
-                                </span>
-                            </h4>
-                            <div id="myCarousel-3" class="myCarousel carousel slide">
-                                <div class="carousel-inner">
-                                    <div class="active item">
-                                        <ul class="thumbnails">
-                                            @foreach (var item in Model.OrderBy(p => p.Tensp))
-                                            {
-                                                <li class="span3">
-                                                    <div style="background-color: white" class="product-box">
-                                                        <span class="sale_tag"></span>
-                                                        <p>
-                                                            <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp"><img style="width: 200px; height: auto;padding-top: 20px;" src="@item.Anhdaidien" alt=""></a>
-                                                        </p>
-                                                        <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="title">@item.Tensp</a><br>
-                                                        <a asp-action="ChiTietSanPham" asp-route-id="@item.Masp" class="category">
-                                                            @if (item.Giakhuyenmai != 1)
-                                                            {
-                                                                <strong style="font-size:20px">@String.Format("{0:N0}", item.Gia * item.Giakhuyenmai) VNĐ</strong>
-                                                                <strike>@String.Format("{0:N0}", item.Gia) VNĐ</strike>
-                                                            }
-                                                            else
-                                                            {
-
-                                                                <strong style="font-size:20px"> @String.Format("{0:N0}", item.Gia) VNĐ</strong>
-
-                                                            }
-                                                        </a>
-
-                                                    </div>
-                                                </li>
-
-                                            }
-
-                                        </ul>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
 
                 </div>
                 <div class="span3 col">

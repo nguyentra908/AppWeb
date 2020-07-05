@@ -17,7 +17,7 @@
     <link href="~/css/style.css" rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="~/css/morris.css" type="text/css" />
     <!-- Graph CSS -->
-    <link href="~/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- jQuery -->
     <script src="~/js/jquery-2.1.4.min.js"></script>
 
@@ -27,7 +27,13 @@
     <link rel="stylesheet" type="text/css" href="~/css/table-style.css" />
     <link rel="stylesheet" type="text/css" href="~/css/basictable.css" />
     <script type="text/javascript" src="~/js/jquery.basictable.min.js"></script>
-
+    <style>
+        #menu li:hover > ul {
+            visibility: visible;
+            width: 250px; 
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
     <div class="page-container">
@@ -71,7 +77,7 @@
 
 
                 <div class="copyrights">
-                    <p>© 2018 N5QPT. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+                    <p>© 2018 N5QPT. All Rights Reserved | Design by  <a href="http://nl.com/" target="_blank">NguyenLinh</a> </p>
                 </div>
                 <!--COPY rights end here-->
             </div>
@@ -84,7 +90,7 @@
             <div style="border-top:1px ridge rgba(255, 255, 255, 0.15)"></div>
             <div class="menu">
                 <ul id="menu">
-                    <li><a href="https://localhost:44380/Admin/trangchuAD"><i class="fa fa-tachometer"></i> <span>Trang chủ</span><div class="clearfix"></div></a></li>
+                    <li><a href="https://localhost:5001/admin/trangchuad"><i class="fa fa-tachometer"></i> <span>Trang chủ</span><div class="clearfix"></div></a></li>
 
 
                     <li id="menu-academico"><a asp-controller="Hoadons" asp-action="Index"><i class="fa fa-envelope nav_icon"></i><span>Đơn hàng</span><div class="clearfix"></div></a></li>
@@ -97,16 +103,24 @@
                             <li id="menu-academico-avaliacoes"><a asp-controller="Hangs" asp-action="Index">Quản lý doanh mục</a></li>
                             <li id="menu-academico-avaliacoes"><a asp-controller="Users" asp-action="Index">Quản lý khách hàng</a></li>
                             <li id="menu-academico-avaliacoes"><a asp-controller="Nhanviens" asp-action="Index">Quản lý nhân viên</a></li>
-                          
+
 
                         </ul>
                     </li>
 
 
+                    <li id="menu-academico">
+                        <a href="#"><i class="fa fa-list-ul" aria-hidden="true"></i><span>Thống kê</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
+                        <ul id="menu-academico-sub">
+                            <li id="menu-academico"><a asp-controller="ThongKe" asp-action="thongke"><i class="fa fa-file-text-o"></i><span>Thống kê đơn hàng</span><div class="clearfix"></div></a></li>
+                            <li id="menu-academico"><a asp-controller="ThongKeSanPhamBanChay" asp-action="ThongKeSanPhamBanChay"><i class="fa fa-file-text-o"></i><span>Top các sản phẩm bán chạy</span><div class="clearfix"></div></a></li>
+                            <li id="menu-academico"><a asp-controller="ThongKeKhachHangMuaNhieu" asp-action="ThongKeKhachHangMuaNhieu"><i class="fa fa-file-text-o"></i><span>Top khách hàng mua nhiều</span><div class="clearfix"></div></a></li>
 
-                    <li id="menu-academico"><a asp-controller="ThongKe" asp-action="thongke"><i class="fa fa-file-text-o"></i><span>Thống kê đơn hàng</span><div class="clearfix"></div></a></li>
 
 
+                        </ul>
+                    </li>
+                  
 
                 </ul>
             </div>

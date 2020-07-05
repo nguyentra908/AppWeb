@@ -4,17 +4,16 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Products 2</title>
+    <title>didongthongminh</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
 
     <link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="~/themes/css/bootstrappage.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="~/themes/css/font-awesome.min.css">
 
-    <link rel="stylesheet" type="text/css" href="~/themes/css/font-awesome.min3.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
     <link href="~/themes/css/flexslider.css" rel="stylesheet" />
     <link href="~/themes/css/main.css" rel="stylesheet" />
@@ -29,7 +28,7 @@
     <script type="text/javascript" src="~/themes/js/jquery-ui.min.js"></script>
 
 
-  
+
 
 
 
@@ -45,45 +44,48 @@
 
         }
     }
-    <div id="top-bar" class="container">
+    <div style="background-color: #3c3f44;    padding: 8px;" id="top-bar" class="container">
         <div class="row">
-            <div class="span4">
-               <div  ><sanp>Hotline: 0986820780 (Miễn phí)</sanp></div>
+            <div style="color: white" class="span4">
+                <div><sanp>Hotline: 0986820780 (Miễn phí)</sanp></div>
             </div>
             <div style="width: 745px;" class="span8">
                 <div class="account pull-right">
                     <ul class="user-menu">
                         @if (@Email != null)
                         {
-                            <li><a asp-controller="Home" asp-action="TaiKhoan" asp-route-id="@Id">Tài khoản</a></li>
-                        } <i class="fa fa-shopping-cart"></i>
-                            <li><a asp-controller="Home" asp-action="GioHang">Giỏ hàng</a></li>
-                            @if (@Email != null)
-                            {
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <span class="glyphicon glyphicon-user"></span>
-                                        <strong>@Email</strong>
-                                        <span class="glyphicon glyphicon-chevron-down"></span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        @*<li><a asp-area="" asp-controller="Userdetails" asp-action="index"><span class="glyphicon glyphicon-log-in"></span> My Profile</a></li>*@
-                                        <li><a asp-area="" asp-controller="Home" asp-action="Logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
-                                    </ul>
-                                </li>
+                            <li><a style="color: white" asp-controller="Home" asp-action="TaiKhoan" asp-route-id="@Id">Tài khoản</a></li>
+                        }
+                        <i style="color: white" class="fa fa-shopping-cart"></i>
+                        <li><a style="color: white" asp-controller="Home" asp-action="GioHang">Giỏ hàng</a></li>
+                        @if (@Email != null)
+                        {
+                            <li class="dropdown">
+                                <a style="color: white" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    <strong>@Email</strong>
+                                    <span class="glyphicon glyphicon-chevron-down"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @*<li><a asp-area="" asp-controller="Userdetails" asp-action="index"><span class="glyphicon glyphicon-log-in"></span> My Profile</a></li>*@
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                    <li><a asp-area="" asp-controller="Home" asp-action="Logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+                                </ul>
+                            </li>
 
-                            }
-                            else
-                            {
-                                <i class="fa fa-key"></i>
+                        }
+                        else
+                        {
+                            <i style="color: white" class="fa fa-sign-in"></i>
 
-                                <li><a asp-area="" asp-controller="Home" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</a></li>
-                                <li><a asp-area="" asp-controller="Home" asp-action="Registration"><span class="glyphicon glyphicon-log-in"></span> Đăng Ký</a></li>
+                            <li><a style="color: white" asp-area="" asp-controller="Home" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</a></li>
+                            <i style="color: white" class="fa fa-key"></i>
+                            <li><a style="color: white" asp-area="" asp-controller="Home" asp-action="Registration"><span class="glyphicon glyphicon-log-in"></span> Đăng Ký</a></li>
 
-                            }
+                        }
 
 
-                        </ul>
+                    </ul>
                     <ul class="nav navbar-nav navbar-right">
                     </ul>
                 </div>
@@ -94,20 +96,20 @@
         <div class="container">
             <div class="row">
                 <div class="span4">
-                    <form method="POST" class="search_form">
-                        <div class="input-group">
-                            <input type="text" class="search-query form-control input-group" Placeholder="Tìm kiếm sản phẩm... ">
-                            <span class="input-group-btn">
-                                <button style="    background: #ff9c00;" class="btn btn-primary rounded-circle btnpro" type="button" id="btn-search">
-                                    <span class="fa fa-search"></span>
-                                </button>
-                            </span>
+                    @using (Html.BeginForm("timkiem", "Home", FormMethod.Post))
+                    {
+                        
+                        <input type="text" class="search-query form-control input-group" id="timkem" name="timkiem" Placeholder="Tìm kiếm sản phẩm... ">
 
-                        </div>
-                    </form>
+                        <input style="background: #0078d7;" class="btn btn-primary rounded-circle btnpro" type="submit" value="" />
+
+                    }
+
+
+
                 </div>
                 <div style="    width: 752px;" class="span8">
-                    <div  class="col-md-3 col-xs-12 col-sm-12 header-left text-center">
+                    <div class="col-md-3 col-xs-12 col-sm-12 header-left text-center">
 
                     </div>
                     <div class="col-md-9 col-xs-12 col-sm-12 header-right">
@@ -115,20 +117,20 @@
                             <ul style="list-style: none;" class="clearfix">
                                 <li style="float: left; text-transform: uppercase; color: #aaaaaa; margin-bottom: 10px;
     margin-right: 50px;" class="shipping">
-                                    <i style="font-size: 24px; color: #ff9c00;  float: left;" class="fa fa-truck" aria-hidden="true"></i><span>
+                                    <i style="font-size: 24px; color: #0078d7;  float: left;" class="fa fa-truck" aria-hidden="true"></i><span>
                                         Giao hàng miễn phí
                                     </span>
                                 </li>
                                 <li style="float: left; text-transform: uppercase; color: #aaaaaa; margin-bottom: 10px;
     margin-right: 50px;" class="shipping">
-                                    <i style="font-size: 24px; color: #ff9c00;  float: left;"<i class="fa fa-credit-card" aria-hidden="true"></i><span>
+                                    <i style="font-size: 24px; color: #0078d7;  float: left;"<i class="fa fa-credit-card" aria-hidden="true"></i><span>
                                         Thanh toán linh hoạt
                                     </span>
                                 </li>
-                               
+
                                 <li style=" text-transform: uppercase; color: #aaaaaa; margin-bottom: 10px;
     margin-right: 50px;" class="shipping;" class="return">
-                                    <i style="font-size: 24px; color: #ff9c00;  float: left;" class="fa fa-retweet" aria-hidden="true"></i><span>
+                                    <i style="font-size: 24px; color: #0078d7;  float: left;" class="fa fa-retweet" aria-hidden="true"></i><span>
                                         Trả hàng trong 30 ngày
                                     </span>
                                 </li>
@@ -137,13 +139,13 @@
 
                     </div>
                 </div>
-                </div>
             </div>
+        </div>
     </section>
     <div style="margin: 0px auto 0px auto" id="wrapper" class="container">
         <section class="navbar main-menu">
             <div style="background:#ced5daa6;" class="navbar-inner main-menu">
-                <a asp-controller="Home" asp-action="TrangChu" class="logo pull-left"><h4 class="title">Di ĐỘNG THÔNG MINH </h4></a>
+                <a asp-controller="Home" asp-action="TrangChu" class="logo pull-left"><h4 style="background: no-repeat;" class="title">Di ĐỘNG THÔNG MINH </h4></a>
                 <nav id="menu" class="pull-right">
                     <ul>
                         @await Component.InvokeAsync("Menu")
@@ -161,15 +163,12 @@
 
 
 
-        <section class="header_text">
-            Website chúng tôi chuyên cung cấp các sản phẩm chất lượng có uy tín và mới nhất trên thị trường hiện nay
-            <br />Hãy ghé thăm trang web của chúng tôi và đừng bỏ lỡ các sản phẩm mới nhé!
-        </section>
+
         <section class="main-content">
             @RenderBody()
         </section>
         <section>
-            <div class="row feature_box">
+            <div style="margin-top: 100px;" class="row feature_box">
                 <div style="width: 360px;" class="span4">
                     <div class="service">
                         <div class="responsive">

@@ -4,6 +4,8 @@ using Rotativa.AspNetCore;
 using WebApplication1.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DOAN.Controllers
 {
@@ -28,6 +30,7 @@ namespace DOAN.Controllers
             return new ViewAsPdf(get);
 
         }
+      
 
 
 

@@ -28,7 +28,7 @@ namespace DOAN.Controllers
         public IActionResult print(string date)
         {
             var get = _context.Hoadon
-                 .Where(p => p.CreatedAt.ToString().Contains(date)).ToList();
+                 .Where(p => p.Ngayhd.ToString().Contains(date)).ToList();
             return new ViewAsPdf(get);
         }
 
@@ -38,10 +38,12 @@ namespace DOAN.Controllers
         {
 
             var get = _context.Hoadon
-             .Where(p => p.CreatedAt.ToString().Contains(date)).ToList();
+             .Where(p => p.Ngayhd.ToString().Contains(date)).ToList();
             return new JsonResult(get);
 
         }
-       
+
+      
+
     }
 }

@@ -213,9 +213,7 @@ namespace WebApplication1.Controllers
                 HttpContext.Session.SetInt32("Id", userdetails.Id);
                 HttpContext.Session.SetString("Password", userdetails.Password);
                 HttpContext.Session.SetString("Email", userdetails.Email);
-
-                HttpContext.Session.SetString("ten", userdetails.FullName);
-                 
+                HttpContext.Session.SetString("ten", userdetails.FullName);              
 
 
                 HttpContext.Session.SetString("diachi", userdetails.Diachi);
@@ -486,6 +484,15 @@ namespace WebApplication1.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-      
+
+        [HttpPost]
+        public IActionResult timkiem(string timkiem)
+        {
+            var get = Context.Sanpham
+                 .Where(p => p.Tensp.Contains(timkiem)).ToList();
+            return View(get);
+        }
+
+
     }
 }

@@ -1,4 +1,7 @@
-﻿@{
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
     ViewData["Title"] = "ThongKe";
     Layout = "~/Views/Shared/_LayoutAD.cshtml";
 }
@@ -21,23 +24,24 @@
 
         $(document).ready(function () {
 
-            $('#date').blur(function () {
-                var date = $('#date').val();
+            $('#soluong').blur(function () {
+                var soluong = $('#soluong').val();
                 $.ajax({
-                    type: 'GET',                  
-                    url: '/thongke/demo/' + date,
+                    type: 'GET',
+                    url: '/ThongKeSanPhamBanChay/demo/' + soluong,
                     success: function (result) {
                         var s = '';
                         var stt = 0;
                         s += '<table>';
-                        s += '<tr><th>STT</th><th>Mã hóa đơn</th><th>Ngày tạo</th><th>Tổng tiền</th><th>Mã khách hàng</th></tr>';
+                        s += '<tr><th>STT</th><th>Mã sản phẩm</th><th>Tên sản phẩm</th><th>Số lượng bán</th><th>Tổng tiền</th></tr>';
                         for (var i = 0; i < result.length; i++) {
                             s += '<tr>';
                             s += '<td>' + stt++ + '</td>';
-                            s += '<td>' + result[i].mahd + '</td>';
-                            s += '<td>' + result[i].ngayhd + '</td>';
+                            s += '<td>' + result[i].ma + '</td>';
+                            s += '<td>' + result[i].ten + '</td>';
+                            s += '<td>' + result[i].sl + '</td>';
                             s += '<td>' + result[i].tongtien + '</td>';
-                            s += '<td>' + result[i].idkh + '</td>';
+                    
                             s +=  '</tr>';
                         }
                         s += '</table>';
@@ -60,10 +64,10 @@
 
 
 
-    @using (Html.BeginForm("print", "ThongKe", FormMethod.Post))
+    @using (Html.BeginForm("print", "ThongKeSanPhamBanChay", FormMethod.Post))
     {
-        <span>Nhập ngày : </span>
-        <input style="width: 200px" type="text" name="date" id="date">
+        <span>Nhập số sản phẩm bán chạy : </span>
+        <input style="width: 200px" type="text" name="soluong" id="soluong">
         <div style="text-align: right">  <input style="text-align: right" type="submit" value="PRINT" /></div>
     }
 

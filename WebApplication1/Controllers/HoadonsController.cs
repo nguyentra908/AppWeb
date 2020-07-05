@@ -94,7 +94,7 @@ namespace DOAN.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Mahd,Ngayhd,Tongtien,Idkh,Ghichu,CreatedAt,UpdatedAt,Tinhtrang")] Hoadon hoadon)
+        public async Task<IActionResult> Edit(int id, [Bind("Mahd,Ngayhd,Tongtien,Idkh,Ghichu,Tinhtrang")] Hoadon hoadon)
         {
             if (id != hoadon.Mahd)
             {
@@ -159,5 +159,8 @@ namespace DOAN.Controllers
         {
             return _context.Hoadon.Any(e => e.Mahd == id);
         }
+
+        
+
     }
 }

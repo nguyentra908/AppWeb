@@ -14,74 +14,71 @@
 </head>
 <body>
     <p>
-        <a asp-action="Create">Create New</a>
+        <i class="fa fa-plus" aria-hidden="true"></i><a asp-action="Create">Thêm sản phẩm</a>
     </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Masp)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Tensp)
-                </th>
-                @*<th>
-                    @Html.DisplayNameFor(model => model.Mota)
-                </th>*@
+    <style>
+        table th {
+            background: #333333 !important;
+            color: #fff;
+            text-transform: uppercase;
+        }
+    </style>
 
-                <th>
-                    @Html.DisplayNameFor(model => model.Gia)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Giakhuyenmai)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Anhdaidien)
-                </th>
 
-                <th>
-                    @Html.DisplayNameFor(model => model.HangNavigation)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Masp)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tensp)
-                </td>
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.Mota)
-                </td>*@
+    <div class="agile-tables">
+        <div class="w3l-table-info">
+            <h2 style="color:#333333;">Danh sách sản phẩm</h2>
+            <table id="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th> Tên sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Giá khuyến mãi</th>
+                        <th>Hình ảnh</th>
+                        <th>NSX</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Masp)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tensp)
+                            </td>
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.Mota)
+                                </td>*@
 
-                <td>
-                  
-                    @String.Format("{0:N0}", item.Gia)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Giakhuyenmai)
-                </td>
-                <td>
-                    <img style="width: 100px;height: 120px;" src="@item.Anhdaidien" alt="">
-                  
-                </td>
+                            <td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.HangNavigation.Tenhang)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Masp">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Masp">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Masp">Delete</a>
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
+                                @String.Format("{0:N0}", item.Gia)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Giakhuyenmai)
+                            </td>
+                            <td>
+                                <img style="width: 100px;height: 120px;" src="@item.Anhdaidien" alt="">
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HangNavigation.Tenhang)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Masp"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                <a asp-action="Delete" asp-route-id="@item.Masp"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
 </body>
 </html>
